@@ -1,0 +1,32 @@
+good_apps:
+  - name: Air Video
+    url: http://itunes.apple.com/us/app/air-video-watch-your-videos/id306550020?mt=8
+    note: User interface is very slick, especially on the iPad version.  Looks nice but is also very functional and with the help of the server software can stream just about anything.
+  - name: Twitter
+    url: http://itunes.apple.com/us/artist/twitter-inc./id296415947
+    note: Drag to refresh feature, clean looking design
+  - name: Commodore 64
+    url: http://itunes.apple.com/us/app/commodore-64/id305504539?mt=8
+    note: Designed to look just like an old commodore 64 which is neat, emulates well.
+  - name: BeejiveIM
+    url: http://itunes.apple.com/us/app/beejiveim-with-push/id291720439?mt=8
+    note: Customizable interface, preforms chat functions well
+  - name: FLUD
+    url: http://itunes.apple.com/us/app/flud/id382544677?mt=8
+    note: Nice colors and design
+bad_apps:
+  - name: iToilet for iPad
+    url: http://itunes.apple.com/us/app/itoilet-for-ipad/id368433241?mt=8
+    note: Horrible graphics, ugly all around.  Gross.
+  - name: Enviro-Bear 2010
+    url: http://itunes.apple.com/us/app/enviro-bear-2010/id321414903?mt=8
+    note: Pretty hillarious for 2 minutes, then just gets old and looks pretty bad. 
+  - name: Crack your screen
+    url: http://itunes.apple.com/us/app/crack-your-screen-simulator/id448925179?mt=8
+    note: This was on the top 20 or so...ugh
+  - name: Lock screen design
+    url: http://itunes.apple.com/us/app/lock-screen-designer/id435888084?mt=8
+    note: Why do we need an app to do this when it can be done on any pc in 2 minutes?
+  - name: Just Light Flashlight
+    url: http://appshopper.com/utilities/just-light-flashlight
+    note: Dumb name, icon, and just lame.  Don't need another flashlight. 

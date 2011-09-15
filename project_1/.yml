@@ -1,0 +1,32 @@
+good_apps:
+  - name: Angry Birds
+    url: http://appshopper.com/games/angry-birds
+    note: Great user interface!  Fun game that is quite challenging.
+  - name: Words With Friends
+    url: http://appshopper.com/games/words-with-friends
+    note: Scrabble game that you can play whenever you want on the go and with many different simultaneously, and can even link to your facebook friends.
+  - name: NCAA Football by EA SPORTS
+    url: http://appshopper.com/games/ncaa%C2%AE-football-by-ea-sports
+    note: Great graphics, can play with others, can make your own plays.  Good functionality.
+  - name: Jetpack Joyride
+    url: http://appshopper.com/games/jetpack-joyride
+    note: Great graphics, looks fun, and is only $.99.
+  - name: CraigsPro+
+    url: http://appshopper.com/utilities/craigspro-craigslist-search-agents-posting-photo-preview
+    note: Great functionality, very useful and east to use.  Great interface.
+bad_apps:
+  - name: Beer Counter
+    url: http://appshopper.com/entertainment/beercounter
+    note: Pointless app because you can just count it yourself or use a pen to tally on your arm, plus the more drinks you have, the more chance you'll have to forget to increase the tally!
+  - name: SimStapler
+    url: http://appshopper.com/games/simstapler
+    note: All it does is make a noise of a stapler when tapped, the icon in the screenshot is form the old school Macs, and it's just pointless and lame.
+  - name: Crazy Candle
+    url: http://appshopper.com/entertainment/crazy-candle
+    note: Poor name because all it does is a picture of a candle that moves, never need to use this and it costs $.99!
+  - name: Hold On!
+    url: http://appshopper.com/productivity/hold-on
+    note: All you do is see how long you can press and hold the Hold button...and it's considered under productivity! Pointless App.
+  - name: iFart.
+    url: http://appshopper.com/entertainment/ifart-2
+    note: Only makes noises and is pretty childish, costs $.99, and says it is perfect for meetings and presentations! -Ha!

@@ -1,0 +1,32 @@
+good_apps:
+  - name: Angry Birds
+    url: http://itunes.apple.com/app/angry-birds-seasons/id398157641?mt=8
+    note: Who doesnt love chucking colored birds into buildings
+  - name: Doodle Jump
+    url: http://itunes.apple.com/app/doodle-jump-be-warned-insanely/id307727765?mt=8
+    note: Painfully addicting, plus super sweet themes
+  - name: iCaltrain
+    url: http://itunes.apple.com/app/icaltrain-caltrain-2011/id292281611?mt=8
+    note: saved me this summer
+  - name: The Hockey News 
+    url: http://itunes.apple.com/app/the-hockey-news-scores-stats/id334957707?mt=8
+    note: Excellent to have if you miss a game
+  - name: Shazam
+    url: http://itunes.apple.com/app/shazam/id284993459?mt=8
+    note: Very useful to have if you dont know a sang
+bad_apps:
+  - name: HockeyGPS
+    url: http://itunes.apple.com/app/hockeygps/id300865790?mt=8
+    note: Wth, completely random. Is'nt that what google maps are for?
+  - name: Justin Bieber App
+    url: http://itunes.apple.com/app/justin-bieber-app/id453902627?mt=8
+    note: Wow.
+  - name: Allergy Watch
+    url: http://appshopper.com/healthcare-fitness/allergy-watch
+    note: Just in case you forget what your allergic to
+  - name: Cat Universe 
+    url: http://itunes.apple.com/app/cat-universe/id461702763?mt=8
+    note: HAhahahaha
+  - name: Home Phone
+    url: http://itunes.apple.com/app/home-phone/id315988934?mt=8
+    note: Whats wrong with the favorites section of your call list. Useless. 

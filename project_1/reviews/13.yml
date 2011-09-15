@@ -1,0 +1,32 @@
+good_apps:
+  - name: Sound Cloud
+    url: http://itunes.apple.com/us/app/soundcloud/id336353151?mt=8
+    note: Feels native, even has custom views/buttons that look and feel native.
+  - name: Dropbox
+    url: http://itunes.apple.com/us/app/dropbox/id327630330?mt=8
+    note: Beautiful illustration used within the app. In app settings screen is a plus.
+  - name: Twitter
+    url: http://itunes.apple.com/us/app/twitter/id333903271?mt=8
+    note: Formerly tweetie, which seems to have pioneered the swipable table view cell to reveal more buttons. Custom tab bar controller has animated arrow which shows the current tab.
+  - name: Square
+    url: http://itunes.apple.com/us/app/square/id335393788?mt=8
+    note: Very complicated signup process is baked directly into the app. Very impressive. No need to go to the website to signup.
+  - name: Google+
+    url: http://itunes.apple.com/us/app/google/id447119634?mt=8
+    note: A lot of custom view objects, but everything is very clean and polished. 
+bad_apps:
+  - name: Job Search (Indeed.com app)
+    url: http://itunes.apple.com/us/app/job-search/id309735670?mt=8
+    note: Uses very few native iOS UI elements. Doesn't feel like a native app. No polish
+  - name: ZipCar
+    url: http://itunes.apple.com/us/app/zipcar/id329384702?mt=8
+    note: The progression through the app makes it hard to reserve a car if one isn't available during the time you choose. There's no way to edit the time or just view when a car is available.
+  - name: Voxer
+    url: http://itunes.apple.com/us/app/voxer-walkie-talkie/id377304531?mt=8
+    note: Too many in-app instructions, like a tutorial. Just let me use the app please. I'll figure it out.
+  - name: Facebook
+    url: http://itunes.apple.com/us/app/facebook/id284882215?mt=8
+    note: Crashes a lot.
+  - name: CropForFree
+    url: http://itunes.apple.com/us/app/crop-for-free/id317856070?mt=8
+    note: Very ugly custom buttons/UI elements.

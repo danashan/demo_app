@@ -1,0 +1,32 @@
+good_apps:
+  - name: GuitarToolkit
+    url: http://itunes.apple.com/us/app/guitartoolkit/id284962368?mt=8
+    note: Excellent user interface, wonderful guitar chord reference, many features
+  - name: SBSettings (3rd Party)
+    url: http://cydia.saurik.com/package/sbsettings
+    note: Convenient, customizable, easy to use, stylish
+  - name: Activator (3rd Party)
+    url: http://modmyi.com/cydia/package.php?id=15639
+    note: Convenient, customizable, easy to use
+  - name: iTeleport
+    url: http://itunes.apple.com/us/app/iteleport-jaadu-vnc-for-iphone/id286470485?mt=8
+    note: Excellent features, easy to use, fast, reliable
+  - name: Skyfire
+    url: http://itunes.apple.com/us/app/skyfire-web-browser/id384941497?mt=8
+    note: Plays flash video, fast, reliable, closest thing to Firefox for iOS
+bad_apps:
+  - name: Hold On!
+    url: http://itunes.apple.com/app/hold-on!/id284963359?mt=8
+    note: Just stupid, people pay for this shit?
+  - name: iDragPaper
+    url: http://itunes.apple.com/app/idragpaper/id316049053?mt=8
+    note: Just stupid, people pay for this shit? 
+  - name: Milk The Cow
+    url: http://itunes.apple.com/us/app/milk-the-cow/id450733533?mt=8
+    note: Just stupid, people download this shit? 
+  - name: Air Horn (Free!)
+    url: http://itunes.apple.com/us/app/air-horn-free!/id348184873?mt=8
+    note: Just stupid, people download this shit? 
+  - name: Dog Whistler Pro - Your Dog Whistle
+    url: http://itunes.apple.com/us/app/dog-whistler-pro-your-dog/id309932993?mt=8
+    note: Just stupid, people download this shit?

@@ -1,0 +1,32 @@
+good_apps:
+  - name: Words with Friends
+    url: http://itunes.apple.com/app/words-with-friends/id322852954?mt=8
+    note: Very fun, Scrabble-like game. Very creative
+  - name: Obama Clock
+    url: http://itunes.apple.com/app/obama-clock/id445326700?mt=8
+    note: Politically polarizing, but great idea and interface.
+  - name: Instagram
+    url: http://itunes.apple.com/app/instagram/id389801252?mt=8
+    note: Awesome idea, design, and options for photos.
+  - name: WolframAlpha
+    url: http://itunes.apple.com/app/wolframalpha/id334989259?mt=8
+    note: Great search engine for empirical or mathematical data.
+  - name: Music Theory Pro
+    url: http://itunes.apple.com/app/music-theory-pro/id390788573?mt=8
+    note: Brilliant design for teaching someone music and making it fun.
+bad_apps:
+  - name: "myAT&T"
+    url: http://itunes.apple.com/app/myat-t/id309172177?mt=8
+    note: "Horrible interface, plus its made by AT&T"
+  - name: Tips and Tricks for iPhone
+    url: http://itunes.apple.com/app/tips-and-tricks-for-iphone/id453334103?mt=8
+    note: Very very ugly design. Bad name. Really bland.
+  - name: Hippocratic Oath
+    url: http://itunes.apple.com/app/hippocratic-oath/id385555621?mt=8
+    note: Allows you to read the Oath in different languages. Its not free. Why?? 
+  - name: Milk The Cow
+    url: http://itunes.apple.com/app/milk-the-cow/id450733533?mt=8
+    note: You milk a picture of utters. This is just bad.
+  - name: Beautify
+    url: http://itunes.apple.com/app/beautify/id434842935?mt=8
+    note: Not only is it absolutely shallow, the results are creep.

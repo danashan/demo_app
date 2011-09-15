@@ -1,0 +1,12 @@
+def prim(val)
+ (2..Math.sqrt(val)).each.do |i|
+ return false if val % 2 ==0
+end
+
+true
+
+end
+
+puts prime(123)
+puts prime(11)
+puts prime(12)
