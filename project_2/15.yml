@@ -1,0 +1,32 @@
+good_apps:
+  - name: Yelp
+    url:  http://itunes.apple.com/app/yelp/id284910350?mt=8
+    note: Great interface and userful for out of towners
+  - name: Alarm Clock Rio
+    url: http://itunes.apple.com/us/app/alarm-clock-rio/id442442102?mt=8
+    note: Userful since iPhone does not come with alarm function
+  - name: Angry Birds
+    url:  http://itunes.apple.com/us/app/angry-birds/id343200565?mt=8
+    note: Fun game that can be played in short intervals
+  - name: Hanging with friends
+    url:  http://itunes.apple.com/us/app/hanging-with-friends/id440784937?mt=8
+    note: Entertaining game that has a good UI and supports multiplayer
+  - name: Netflix
+    url: http://itunes.apple.com/us/app/netflix/id363590051?mt=8
+    note: All features available on phone, makes streaming videos easy
+bad_apps:
+  - name: iCab Mobile
+    url:  http://itunes.apple.com/app/icab-mobile-web-browser/id308111628?mt=8
+    note: Good idea but app is written to be used inside browser which makes UI
+  - name: Flashlight
+    url:  http://itunes.apple.com/us/app/id396301854?mt=8
+    note: Dont need another flashlight application, bad UI
+  - name: iGLowStick
+    url:  http://itunes.apple.com/us/app/iglowstick/id319569885?mt=8
+    note: Pointless, boring, useless, bad UI
+  - name: Phone Security Free
+    url:  http://itunes.apple.com/us/app/phone-security-free/id334569243?mt=8
+    note: Meant to be a entertaining app but have already seen this, its useless
+  - name: What does my name mean?
+    url:  http://itunes.apple.com/us/app/what-does-my-name-mean/id346205042?mt=8
+    note: Bad icon, bad UI, pointless application

@@ -1,0 +1,33 @@
+good_apps:
+  - name: Flashlight
+    url: http://appshopper.com/utilities/flashlight-4-2
+    note: Good approach, take something simple and make it great
+  - name: Nike+ GPS
+    url: http://appshopper.com/healthcare-fitness/nike-gps
+    note: Pedometer integration, community based, very complete, slick UI.
+  - name: Words With Friends
+    url: http://appshopper.com/games/words-with-friends
+    note: Fantastic concept design, gender/age neutral
+  - name: Contre Jour
+    url: http://appshopper.com/games/contre-jour
+    note: Great look and feel, gender neutral, easy controls
+  - name: http://appshopper.com/entertainment/cheats-with-friends-best-word-finder-for-words-with-friends
+    url: http://appshopper.com/utilities/flashlight-4-2
+    note: Piggy-back design
+bad_apps:
+  - name: Milk the Cow
+    url: http://appshopper.com/entertainment/milk-the-cow-2
+    note: No idea what theyre going for with this app
+  - name: Crazy Blocks Free
+    url: http://appshopper.com/games/crazy-blocks-free
+    note: Horrible UI
+  - name: Country Music Crossword
+    url: http://appshopper.com/games/country-music-crossword
+    note: Horrible UI, poor game design, nothing interesting
+  - name: DRAW!
+    url: http://appshopper.com/games/draw-4
+    note: Bad concept to port, controls are awkward or easy
+  - name: Best of Rodeos
+    url: http://appshopper.com/sports/best-of-rodeos%e2%80%94truly-western-professionals
+    note: Slide show of rodeos, just boring, too simple
+

@@ -1,0 +1,32 @@
+good_apps:
+  - name: Dungeon Raid
+    url: http://appshopper.com/games/dungeon-raid
+    note: Amazing game. Very simple interface by hours of entertainment.
+  - name: Angry Birds
+    url: http://appshopper.com/games/angry-birds
+    note: The pinnacle of mobile development games.
+  - name: Fruit Ninja
+    url: http://appshopper.com/games/fruit-ninja
+    note: Another great game. Very popular for a reason. Very addicting.
+  - name: Camera+
+    url: http://appshopper.com/photography/camera...the-ultimate-photo-app
+    note: A huge overhaul for the camera on IOS. I own it and it is very fun.
+  - name: Words With Friends
+    url: http://appshopper.com/games/words-with-friends
+    note: Basically scrabble but networked. A great example of a networking app.
+bad_apps:
+  - name: Photo55
+    url: http://appshopper.com/photography/photo55
+    note: Recreates functionality available in apps such as Camera+ but at the same price lacking all other features. Pointless app.
+  - name: Alarm Clock Rio
+    url: http://appshopper.com/utilities/alarm-clock-rio
+    note: Pointless app, only has functionality that is already included in IOS and it costs money.
+  - name: Reckless Driver
+    url: http://appshopper.com/games/reckless-getaway
+    note: You may notice a theme here but this app costs $3 and has very similar gameplay and adds very little compared to similar games. Did well at first and then fell like a stone.
+  - name: Password Safe - iPassSafe
+    url: http://appshopper.com/productivity/ipasssafe
+    note: There are better, cheaper, apps out there. No real appeal.
+  - name: Marvel Comics
+    url: http://appshopper.com/books/marvel-comics
+    note: I may just not understand the point of this app but I would think that making a proprietary app to read a comic would by overshadowed by any form of reader client for the IOS.

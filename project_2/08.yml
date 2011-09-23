@@ -1,0 +1,32 @@
+good_apps:
+  - name: WoW Mobile Armory
+    url: http://itunes.apple.com/app/world-warcraft-mobile-armory/id321057000?mt=8
+    note: Element-packed UI.  Retrieves tons of data from the games database in realtime, and allows interaction with the in-game economy and chat channels.
+  - name: Trivial Pursuit
+    url: http://itunes.apple.com/app/trivial-pursuit/id310735743?mt=8
+    note: Great adaptation of the classic game, very user friendly, and multiplayer support over WiFi.
+  - name: Angry Birds
+    url: http://itunes.apple.com/app/angry-birds/id343200656?mt=8
+    note: Simple concept with good physics engine and good use of the touchscreen capabilities.
+  - name: WolframAlpha
+    url: http://itunes.apple.com/app/wolframalpha/id334989259?mt=8
+    note: Clean and useful design.  Able to display a variety of output.  Very useful in a portable device.
+  - name: Stanza
+    url: http://itunes.apple.com/app/stanza/id284956128?mt=8
+    note: Great ebook reader.  Easy to get books from their library, and very customizable display options.
+bad_apps:
+  - name: Fart!!
+    url: http://itunes.apple.com/app/fart!!/id375248440?mt=8
+    note: All it does is make fart sounds.  Pointless waste of AppStore space.
+  - name: Voice Changer
+    url: http://itunes.apple.com/app/voice-changer/id292342140?mt=8
+    note: Very poor sound conversion.  Does not do the one function its supposed to do.
+  - name: Lightsaber Duel 
+    url: http://itunes.apple.com/app/star-wars-lightsaber-duel/id362158521?mt=8
+    note: Amusing for a minute, but ultimately pointless app.  Shake device to make sound.  Users wont keep long.
+  - name: FatBooth 
+    url: http://itunes.apple.com/app/fatbooth/id372268904?mt=8
+    note: Another gimmicky app that ultimately does nothing but milk social networking services for ad purposes.
+  - name: iCrack
+    url: http://itunes.apple.com/app/icrack-the-safest-way-to-crack/id452816380?mt=8
+    note: Creates the illusion that your iPhones screen is cracked.  As stupid as it sounds.

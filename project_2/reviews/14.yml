@@ -1,0 +1,32 @@
+good_apps:
+  - name: Sketch Book Pro 
+    url: http://itunes.apple.com/us/app/sketchbook-pro-for-ipad/id364253478?mt=8
+    note: I like it because of the integrated gestures, simple menus, and powerful functions.
+  - name: Uzu
+    url: http://itunes.apple.com/us/app/uzu/id376551723?mt=8
+    note: This app is amazing I've spent hours on it and it does absolutely nothing constructive. 
+  - name: Flipboard
+    url: http://itunes.apple.com/us/app/flipboard/id358801284?mt=8
+    note: Keeps the flow of information coming. Easy to use, caches enough of the story so you don't have to wait for a load to get the first paragraph. Integrated gestures.
+  - name: GoodReader
+    url: http://itunes.apple.com/us/app/goodreader-for-ipad/id363448914?mt=8
+    note: One of the more complicated programs in terms of controls and function. Despite an overwhelming number of buttons (especially in early versions) the app is very production and integrates well with other services.
+  - name: VNC Viewer
+    url: http://itunes.apple.com/us/app/vnc-viewer/id352019548?mt=8
+    note: Makes use of a popular and useful protocol and has a simple interface.
+bad_apps:
+  - name: Data Analysis
+    url: http://itunes.apple.com/us/app/dataanalysis/id375603883?mt=8
+    note: Could not figure out how to use it in five minutes. Im sure it does something but it lost my interest.
+  - name: HeadSpace
+    url: http://itunes.apple.com/us/app/headspace/id300244538?mt=8
+    note: Bad implementation of graphically showing hierarchical information, good idea, but not at all practical.
+  - name: Hand X-Ray Scanner
+    url: http://itunes.apple.com/us/app/hand-x-ray-scanner/id365953945?mt=8
+    note: I dislike the fact that there is no function of than entertaining the extremely gullible.  
+  - name: Facebook
+    url: http://itunes.apple.com/us/app/facebook/id284882215?mt=8
+    note: Clunky, user items such as pictures not organized well, certain information completely inaccessible.
+  - name: Draw
+    url: http://itunes.apple.com/us/app/draw-for-ipad/id363207607?mt=8
+    note: Out of the space available to write on, the app cuts your screen to about 70% of its potential. As you draw a lined, it is stored I'm memory in a way that the app slows substantially that longer the line.

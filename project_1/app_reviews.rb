@@ -2,10 +2,18 @@
 
 require 'yaml'
 
+if ARGV.size != 1
+  puts "Usage: app_review.rb <outputfile>"
+else
+  app_review.rb = ARGV[0]
+  outputfile = ARGV[1]
+  puts "Input file: #{app_review.rb}"
+  puts "Output file: #{app_review.html}"
+  
 #create html file
-f = File.new("app_reviews.html", "w+")
+f = File.new("app_review.html", "w+")
 
-f.puts"<html><body bgcolor='wheat';font-family='helvetica';font-color='red' >"
+f.puts"<html><body bgcolor='white';font-family='helvetica';font-color='red' >"
 f.puts"<p><h2>Good Apps</h2></p>"
 # good apps table
 f.puts"<table border='2' align='center' >"
@@ -60,3 +68,4 @@ f.puts "</body></html>"
 end
 f.puts"</table>"
    f.close()
+end

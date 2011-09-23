@@ -1,0 +1,32 @@
+good_apps:
+  - name: Pulse
+    url: http://itunes.apple.com/app/pulse-news-for-ipad/id371088673?mt=8
+    note: Great user interface! customize rss feeds and section them by pages
+  - name: Continuity
+    url: http://itunes.apple.com/app/continuity-2-the-continuation/id432555999?mt=8
+    note: Creative game but. Basic graphics fun
+  - name: MetalStorm
+    url: http://itunes.apple.com/app/metalstorm-online/id425746946?mt=8
+    note: Fun app good graphics, good use of accelerometer
+  - name: Death Rally
+    url: http://itunes.apple.com/app/death-rally/id422020153?mt=8
+    note: Good use of accelerometer, good graphics smooth game.
+  - name: Lux Dlx
+    url: http://itunes.apple.com/app/lux-dlx-2/id299813413?mt=8
+    note: Works well fun game lots of maps to download.
+bad_apps:
+  - name: Money Motor
+    url: http://itunes.apple.com/us/app/4-wheel-motorcycle-game-hd/id408410196?mt=8
+    note: Dumb name, dumb game, no instructions hard to control, pure crap
+  - name: Age Touch Scanner
+    url: http://itunes.apple.com/app/age-touch-scanner/id342473762?mt=8
+    note: Does not do anything. Fake app. just plan crap 
+  - name: Guess My Word
+    url: http://itunes.apple.com/app/guess-my-word/id362709556?mt=8
+    note: ugly app, ok idea but not well thought out.
+  - name: Greencard 
+    url: http://itunes.apple.com/app/greencard/id298774975?mt=8
+    note: Ugly app, doesnt make good cards, lost of people said it crashed their phones 
+  - name: Dumb Button
+    url: http://itunes.apple.com/app/dumb-button/id364927646?mt=8
+    note: Dumb game... bad desing nothing fun or interesting 

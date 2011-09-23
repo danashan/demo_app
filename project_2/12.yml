@@ -1,0 +1,32 @@
+good_apps:
+  - name: CraigsPro+
+    url: http://appshopper.com/utilities/craigspro-craigslist-search-agents-posting-photo-preview
+    note: Multi-city searches (not sure if that can be done on the Web site). Contact seller directly from app via phone or e-mail. Screen shots look  
+  - name: Words With Friends 
+    url: http://appshopper.com/games/words-with-friends
+    note: A familiar game I know and love (Scrabble) that I can play with friends using the app and Facebook. Up to 20 games at a time. Interface looks good.
+  - name: WebCC
+    url: http://webccgame.com
+    note: Another classic game favorite on the iPhone. Graphics are from Tile World. I'm used to playing this on the PC, but it was originally for the Atari Lynx, so the small screen and controls are a bit of a throwback. Some levels will be impossible though.
+  - name: Tetris
+    url: http://appshopper.com/games/tetris
+    note: I was also introduced to this game as part of the Best of Windows Entertainment Pack, so I'm not sure how well a handheld version of the game will translate. Graphics look good and there's several gameplay options.
+  - name: Pandora Radio 
+    url: www.pandora.com 
+    note: Easy to flip between stations. Familiar interface for Web users. Wish there was a way to go back to past few songs (at least). 
+bad_apps:
+  - name: Flashlight
+    url: http://appshopper.com/utilities/flashlight-4-2
+    note: My Android phone doesn't have a flash, so I guess a flashlight app wouldn't work on it. But I don't see the point of any flashlight app. The glow from my screen has always been enough to light up a room enough to find a light switch.
+  - name: iBeer
+    url: http://appshopper.com/entertainment/ibeer
+    note: If you could actually drink the beer, that would be something. I'm pretty sure Apple hasn't implemented that feature in their phones yet. (I would definitely look at buying one if they ever did, however.) A useless novelty application whose novelty would wear off quickly.
+  - name: iStudiez Pro
+    url: http://appshopper.com/productivity/istudent-pro
+    note: Clean interface. Looks like it has good features for time management (with calendar integration). Only reason this isn't in my "good_apps" section is because of the awful name. Is the target market for this app the illiterate? Change the "z" to an "s" and this will change sections. 
+  - name: Adobe CreatePDF 
+    url: http://appshopper.com/business/adobe%c2%ae-createpdf
+    note: $9.99. I guess it could be useful if your iOS device didn't read the file formats that CreatePDF can convert into PDFs.  
+  - name: Just Light Flashlight
+    url: http://appshopper.com/utilities/just-light-flashlight
+    note: Dumb name, icon, and just lame.  Don't need another flashlight. 
