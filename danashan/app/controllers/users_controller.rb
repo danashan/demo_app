@@ -69,6 +69,18 @@ class UsersController < ApplicationController
     end
   end
 
+private
+
+def is_user
+  if User.exists?(params[:id])
+    @user = User.find(params[:id]);
+    if !current_user || current_user = @user.id
+      redirect_to(homepage_url, :notice => "No access")
+    end
+    else
+      redirect_to(homepage_url, :notice => "No access (else)")
+    end
+    end
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

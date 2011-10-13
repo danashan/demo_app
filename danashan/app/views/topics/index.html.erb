@@ -1,0 +1,29 @@
+<!--/app/views/topics/index.html.erb> -->
+<h1 id="page_title">Topics</h1>
+
+<table>
+  <tr>
+
+    <th>Title</th>
+    <th>Forum</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @topics.each do |topic| %>
+  <tr>
+
+	<td><%= link_to topic.title, topic_path(topic) %></td>
+	<td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+	<td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Topic', new_topic_path %>
+

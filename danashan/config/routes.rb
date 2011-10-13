@@ -1,4 +1,50 @@
 Danashan::Application.routes.draw do
+ #  match 'home' => 'home#index', :as => :home
+ # 
+ #    resources :topics do
+ #      resources :posts
+ #    end
+ # 
+ #    resources :forums do
+ #      resources :topics 
+ # #       resources :posts
+ #  #end
+ #  
+ #  
+ #  
+ # 
+ #  
+ #  end
+ # 
+ #  root :to => "home#index"
+
+  resources :users
+  resources :forums
+  resources :topics do 
+    resources :posts
+  end
+  root :to => 'forums#index'
+
+# resources :users do
+   # resources :forums do
+  #    resources :topics do
+ #       resources :posts
+#      end
+#    end
+#  end
+  
+
+
+
+#  resources :users
+
+
+# notes from tutoril
+#  resources :users, :user_sessions
+#  match 'login' => 'user_sessions#new', :as => :login
+#  match 'logout' => 'user_sessions#destroy', :as => :logout
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

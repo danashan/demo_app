@@ -56,15 +56,16 @@ class ForumsController < ApplicationController
   # PUT /forums/1
   # PUT /forums/1.json
   def update
+    
     @forum = Forum.find(params[:id])
 
     respond_to do |format|
       if @forum.update_attributes(params[:forum])
         format.html { redirect_to @forum, :notice => 'Forum was successfully updated.' }
-        format.json { head :ok }
+     
       else
         format.html { render :action => "edit" }
-        format.json { render :json => @forum.errors, :status => :unprocessable_entity }
+     
       end
     end
   end

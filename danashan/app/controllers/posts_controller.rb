@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
+  before_filter :load_forum_and_topic
+  
   # GET /posts
   # GET /posts.json
+
   def index
-    @posts = Post.all
+    @posts = @topic.posts.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { redirect_to(topic_path(@topic)) } # index.html.erb
       format.json { render :json => @posts }
     end
   end
@@ -13,10 +16,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
-
+#    @post = @topic.posts.find(params[:id])
+    @post = Post.find(params[:id])      #new commnet out prev line
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to(topic_path(@topic)) }# show.html.erb
       format.json { render :json => @post }
     end
   end
@@ -24,8 +27,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = Post.new
-
+    @post = @topic.posts.build
+   
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @post }
@@ -40,11 +43,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(params[:post])         #new
+    @post = @topic.posts.new(params[:post])
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, :notice => 'Post was successfully created.' }
+        format.html { redirect_to @topic, :notice => 'Post was successfully created.' }
         format.json { render :json => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }
@@ -79,5 +83,10 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :ok }
     end
+  end
+  private
+  def load_forum_and_topic
+    @topic = Topic.find(params[:topic_id])
+    @forum = @topic.forum
   end
 end

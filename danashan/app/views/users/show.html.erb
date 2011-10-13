@@ -1,0 +1,15 @@
+<h1 id="page_title"><%= @user.name %>'s Profile</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Id:</b>
+  <%= @user.id %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> 
+<%= link_to 'Back', users_path %>

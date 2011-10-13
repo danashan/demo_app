@@ -1,0 +1,45 @@
+/* Layout Styles */
+#wrapper {
+    width: 750px;
+    margin: 25px auto;
+    border: 1px solid black;
+}
+
+#top_nav {
+    padding: 5px;
+    text-align: right;
+    border-bottom: 1px solid black;
+}
+
+#top_nav h1 {
+    display:inline;
+    float: left;
+}
+
+#top_nav h1 img {
+    vertical-align:middle;
+}
+
+#content {
+    padding: 0px 5px 5px 5px;
+    clear: both;
+}
+
+#content h1 {
+    font-size: 14pt;
+}
+
+#content h1#page_title {
+    text-align:center;
+    margin-top: 0px;
+}
+
+#content table {
+    width: 95%;
+    margin: 5px auto;
+}
+
+/* Helper styles */
+.bclear {
+    clear: both;
+}

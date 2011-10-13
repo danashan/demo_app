@@ -1,0 +1,30 @@
+<!-- app/views/forums.show 
+	single forum with topics listed
+-->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title: </b>
+  <%= link_to @forum.title %>
+</p>
+
+<div id="topics">
+<p>
+<b>Topics </b>
+  <% @forum.topics.each do |topic| %>
+
+  <div class="listing">
+
+		<%= link_to topic.title, topic_path(topic) %>
+	</div>
+    
+  <% end %>
+
+
+<div style="display:none">
+  <%= link_to 'Edit', edit_forum_path(@forum) %> |
+</div>
+<%= link_to 'Back', forums_path %> | 
+
+<%= link_to 'New Topic', new_topic_path %>
