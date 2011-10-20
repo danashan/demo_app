@@ -1,0 +1,9 @@
+<%= form_for @forum do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :size => 50 %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

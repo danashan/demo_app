@@ -1,4 +1,12 @@
 RailsProjects::Application.routes.draw do
+  resources :users
+  resources :forums
+  resources :topics do
+  resources :posts, :only => [:create, :destroy]
+end
+root :to =>'forums#index'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

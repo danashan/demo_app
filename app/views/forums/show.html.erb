@@ -1,0 +1,23 @@
+<!-- # app/views/forums/show.html.erb -->
+<% title @forum.title  %>
+
+<table>
+  <tr>
+    <th width="60%">Topic Title</th>
+    <!-- <th width="10%">Replies</th>
+    <th width="30%">Last Post</th> -->
+  </tr>
+  <% for topic in @forum.topics %>
+    <tr>
+      <td><%= link_to h(topic.title), topic_path(topic.id) %>
+		<td><%= link_to forum.user, user_path(forum)%></td>
+      <td><%= topic.posts - 1 %></td>
+      <td class="right"></td>
+      <td><%= link_to "Show", topic %></td>
+      <td><%= link_to "Edit", edit_topic_path(topic) %></td>
+      <td><%= link_to "Destroy", topic, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Topic", "/topics/new?forum=#{@forum.id}" %></p>

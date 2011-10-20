@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Posts</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @topic.posts.each do |post| %>
+    <tr>
+      <td><%= post.user.name %></td>
+      <td><%= link_to "Delete", topic_post_path(@topic, post), :method => :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  
+  <tfoot>
+    <tr>
+      <td>
+        <%= form_for([@topic, Post.new]) do |f| %>
+          <%= f.collection_select :user_id, User.all, :id, :name %>
+      </td>
+      <td>
+          <%= f.submit "Add Post" %>
+        <% end %>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+ 

@@ -1,0 +1,25 @@
+<%= form_for @topic do |f| %>
+  <%= f.error_messages %>
+
+<% if params[:forum] %><input type="hidden" id="topic_forum_id" name="topic[forum_id]" value="<%= params[:forum] %>" />
+	<% end %> 
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.collection_select :user_id, User.all, :id, :name %>
+  </p>
+<p>
+	<%= f.label :forum_id %><br />
+	 <%= f.collection_select :forum_id, Forum.all, :id, :title %>
+	
+</p>
+ <p>  
+	<%= render 'posts' %>
+    
+  </p> 
+
+  <p><%= f.submit "Create" %></p>
+<% end %>
