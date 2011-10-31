@@ -1,5 +1,16 @@
 SampleApp::Application.routes.draw do
-  resources :users
+
+  get "sessions/new"
+
+    resources :users
+    resources :sessions, :only => [:new, :create, :destroy]
+    resources :microposts, :only => [:create, :destroy]
+
+    match '/signup',  :to => 'users#new'
+    match '/signin',  :to => 'sessions#new'
+    match '/signout', :to => 'sessions#destroy'
+
+  get "users/new"
 
   
   match '/signup/', :to => 'users#new'
@@ -45,13 +56,13 @@ SampleApp::Application.routes.draw do
 
   # Sample resource route with sub-resources:
   #   resources :products do
-  #     resources :comments, :sales
+  #     resources :posts, :sales
   #     resource :seller
   #   end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do
-  #     resources :comments
+  #     resources :posts
   #     resources :sales do
   #       get 'recent', :on => :collection
   #     end

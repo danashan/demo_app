@@ -31,13 +31,13 @@ DemoApp::Application.routes.draw do
 
   # Sample resource route with sub-resources:
   #   resources :products do
-  #     resources :comments, :sales
+  #     resources :posts, :sales
   #     resource :seller
   #   end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do
-  #     resources :comments
+  #     resources :posts
   #     resources :sales do
   #       get 'recent', :on => :collection
   #     end

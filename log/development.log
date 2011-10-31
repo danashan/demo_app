@@ -1,0 +1,3544 @@
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (3.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateForums (20111018051524)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "forums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111018051524')[0m
+Migrating to CreateTopics (20111018052519)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111018052519')[0m
+Migrating to CreatePosts (20111018052612)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111018052612')[0m
+Migrating to CreateUsers (20111018052716)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111018052716')[0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("forums")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("topics")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateForums (20111018051524)
+Migrating to CreateTopics (20111018052519)
+Migrating to CreatePosts (20111018052612)
+Migrating to CreateUsers (20111018052716)
+Migrating to AddForeignToTopics (20111018054449)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (50.0ms)[0m  [1mALTER TABLE "topics" ADD "forum_id" integer[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111018054449')
+Migrating to AddForeignToPosts (20111018054702)
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "posts" ADD "topic_id" integer[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111018054702')
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("forums")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("topics")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 22:56:26 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (8.1ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% @forums.each do |forum| %>
+    13:   <tr>
+    14: 	<td><%= link_to forum.title, forum_path(forum) %></td>
+    15: 		<td><%= link_to forum.user, user_path(forum)%></td>
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2296408340'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 22:57:10 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <!-- <% @forums.each do |forum| %> -->
+    13:   <tr>
+    14: 	<td><%= link_to forum.title, forum_path(forum) %></td>
+    15: 		<td><%= link_to forum.user, user_path(forum)%></td>
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2298320260'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 22:57:20 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% @forums.each do |forum| %>
+    13:   <tr>
+    14: 	<td><%= link_to forum.title, forum_path(forum) %></td>
+    15: 		<td><%= link_to forum.user, user_path(forum)%></td>
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2296912700'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 22:58:35 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 59ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% for forum in @forums %>
+    13:     <tr>
+    14:       <td><h4><%= link_to h(forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small><br />
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2298720900'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 22:58:37 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% for forum in @forums %>
+    13:     <tr>
+    14:       <td><h4><%= link_to h(forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small><br />
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2298720900'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 22:59:54 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% for forum in @forums %>
+    13:     <tr>
+    14:       <td><h4><%= link_to h(forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small><br />
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2295819540'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 23:01:21 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% @forums.each do |forum| %>
+    13:     <tr>
+    14:       <td><h4><%= link_to h(forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small><br />
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2298040440'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 23:02:20 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% @forums.each do |forum| %>
+    13:     <tr>
+    14:       <td><h4><%= link_to (forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small><br />
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2296447340'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 23:03:31 -0700 2011
+  Processing by ForumsController#index as HTML
+Rendered forums/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    9:     <th align="left" >Title</th>
+    10:   </tr>
+    11: 
+    12: <% @forums.each do |forum| %>
+    13:     <tr>
+    14:       <td><h4><%= link_to h(forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small>
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2298497140'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Oct 17 23:05:48 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.5ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered forums/index.html.erb within layouts/application (0.5ms)
+Compiled application.css  (1ms)  (pid 30070)
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Oct 17 23:05:48 -0700 2011
+Served asset /application.css - 200 OK (3ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Mon Oct 17 23:05:48 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/forums/new" for 127.0.0.1 at Tue Oct 18 08:09:55 -0700 2011
+  Processing by ForumsController#new as HTML
+Rendered forums/_form.html.erb (6.6ms)
+Rendered forums/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 08:09:56 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 08:09:56 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 13:38:04 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (1.0ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered forums/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 40ms (Views: 37.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 13:38:04 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums" for 127.0.0.1 at Tue Oct 18 13:38:22 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered forums/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 72ms (Views: 70.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 13:38:22 -0700 2011
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 13:38:22 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/forums/index" for 127.0.0.1 at Tue Oct 18 13:38:28 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1  [["id", "index"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Forum with id=index):
+  app/controllers/forums_controller.rb:16:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.7ms)
+
+
+Started GET "/forums/show" for 127.0.0.1 at Tue Oct 18 13:38:37 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "show"]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find Forum with id=show):
+  app/controllers/forums_controller.rb:16:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.0ms)
+
+
+Started GET "/forums/new" for 127.0.0.1 at Tue Oct 18 13:41:26 -0700 2011
+  Processing by ForumsController#new as HTML
+Rendered forums/_form.html.erb (5.6ms)
+Rendered forums/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 74ms (Views: 73.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 13:41:26 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics" for 127.0.0.1 at Tue Oct 18 13:41:39 -0700 2011
+
+AbstractController::ActionNotFound (The action 'index' could not be found for TopicsController):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 13:41:43 -0700 2011
+  Processing by TopicsController#new as HTML
+Rendered topics/_form.html.erb (64.9ms)
+Rendered topics/new.html.erb within layouts/application (67.0ms)
+Completed 200 OK in 91ms (Views: 90.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 13:41:43 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/forums" for 127.0.0.1 at Tue Oct 18 13:42:33 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered forums/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 13:42:33 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/forums/new" for 127.0.0.1 at Tue Oct 18 13:43:05 -0700 2011
+  Processing by ForumsController#new as HTML
+Rendered forums/_form.html.erb (5.0ms)
+Rendered forums/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 13:43:05 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started POST "/forums" for 127.0.0.1 at Tue Oct 18 13:43:17 -0700 2011
+  Processing by ForumsController#create as HTML
+  Parameters: {"commit"=>"Create Forum", "forum"=>{"title"=>"First Forum"}, "authenticity_token"=>"jEpQzvc5ZuQkywLeWPGFoxSluF+3KXK0vOAf+OgIrr0=", "utf8"=>"\342\234\223"}
+  [1m[36mSQL (174.0ms)[0m  [1mINSERT INTO "forums" ("created_at", "title", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 18 Oct 2011 20:43:17 UTC +00:00], ["title", "First Forum"], ["updated_at", Tue, 18 Oct 2011 20:43:17 UTC +00:00]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 206ms
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 13:43:17 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/index.html.erb within layouts/application (83.1ms)
+Completed 500 Internal Server Error in 92ms
+
+ActionView::Template::Error (undefined method `user' for #<Forum:0x111c92220>):
+    13:     <tr>
+    14:       <td><h4><%= link_to h(forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small>
+    16: 		<td><%= link_to forum.user, user_path(forum)%></td>
+    17: <br />
+    18: </td>
+    19:       <td class="right"></td>
+  app/views/forums/index.html.erb:16:in `_app_views_forums_index_html_erb__1743006785_2298497140'
+  app/views/forums/index.html.erb:12:in `each'
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2298497140'
+  app/controllers/forums_controller.rb:5:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 17:26:13 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/index.html.erb within layouts/application (14.9ms)
+Completed 500 Internal Server Error in 26ms
+
+ActionView::Template::Error (undefined method `user' for #<Forum:0x111d48098>):
+    13:     <tr>
+    14:       <td><h4><%= link_to h(forum.title), forum_path(forum.id) %></h4>
+    15:         <small><%= forum.topics.count %> topics</small>
+    16: 		<!-- <td><%= link_to forum.user, user_path(forum)%></td> -->
+    17: <br />
+    18: </td>
+    19:       <td class="right"></td>
+  app/views/forums/index.html.erb:16:in `_app_views_forums_index_html_erb__1743006785_2297021080'
+  app/views/forums/index.html.erb:12:in `each'
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2297021080'
+  app/controllers/forums_controller.rb:5:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 17:26:45 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 26ms (Views: 23.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:26:45 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:26:45 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 17:27:50 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 81ms (Views: 79.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:27:50 -0700 2011
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:27:50 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 17:27:53 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered forums/show.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 11ms
+
+ActionView::Template::Error (undefined method `name' for #<Forum:0x111da1058>):
+    1: # app/views/forums/show.html.erb
+    2: <% title @forum.name  %>
+    3: 
+    4: <table>
+    5:   <tr>
+  app/views/forums/show.html.erb:2:in `_app_views_forums_show_html_erb___1918711242_2297171880'
+  app/controllers/forums_controller.rb:17:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.0ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 17:28:11 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1
+Rendered forums/show.html.erb within layouts/application (72.7ms)
+Completed 200 OK in 85ms (Views: 82.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:28:11 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:28:11 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 17:28:21 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1
+Rendered forums/show.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 25ms (Views: 21.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:28:21 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:28:21 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 17:28:49 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+Rendered topics/_form.html.erb (6.3ms)
+Rendered topics/new.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 16ms (Views: 15.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:28:50 -0700 2011
+Served asset /defaults.js - 404 Not Found (9ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:28:50 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 17:29:50 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+Rendered topics/_form.html.erb (7.4ms)
+Rendered topics/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:29:50 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:29:50 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 17:30:48 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_form.html.erb (62.5ms)
+Rendered topics/new.html.erb within layouts/application (63.4ms)
+Completed 500 Internal Server Error in 69ms
+
+ActionView::Template::Error (undefined method `user' for #<Topic:0x111f159c0>):
+    6:   </p>
+    7:   <p>
+    8:     <%= f.label :user_id %><br />
+    9:     <%= f.collection_select :user, User.all, :id, :name %>
+    10:   </p>
+    11:   <p><%= f.submit %></p>
+    12: <% end %>
+  app/views/topics/_form.html.erb:9:in `_app_views_topics__form_html_erb__508311683_2297928560'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2297928560'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2295669120'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.2ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 17:35:46 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (15.7ms)
+Rendered topics/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:35:47 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:35:47 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 17:36:06 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_form.html.erb (69.8ms)
+Rendered topics/new.html.erb within layouts/application (70.9ms)
+Completed 200 OK in 81ms (Views: 80.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:36:06 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:36:06 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 17:37:21 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (16.5ms)
+Rendered topics/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:37:21 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:37:21 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/topics/" for 127.0.0.1 at Tue Oct 18 17:37:27 -0700 2011
+  Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" [0m
+Completed 500 Internal Server Error in 6ms
+
+ActionView::MissingTemplate (Missing template topics/index, application/index with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:erb, :coffee, :builder]}. Searched in:
+  * "/Users/Dana/rails_projects/app/views"
+):
+  app/controllers/topics_controller.rb:6:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 17:38:07 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (64.1ms)
+Rendered topics/new.html.erb within layouts/application (65.3ms)
+Completed 200 OK in 75ms (Views: 73.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:38:07 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/" for 127.0.0.1 at Tue Oct 18 17:38:12 -0700 2011
+  Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" [0m
+Rendered topics/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:38:12 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:38:12 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/" for 127.0.0.1 at Tue Oct 18 17:39:12 -0700 2011
+  Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" 
+Rendered topics/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:39:12 -0700 2011
+Served asset /defaults.js - 404 Not Found (76ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:39:12 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/" for 127.0.0.1 at Tue Oct 18 17:39:32 -0700 2011
+  Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" [0m
+Rendered topics/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:39:32 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:39:32 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/" for 127.0.0.1 at Tue Oct 18 17:42:12 -0700 2011
+  Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" 
+Rendered topics/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 17:42:12 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 17:42:12 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:42:19 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_form.html.erb (15.8ms)
+Rendered topics/new.html.erb within layouts/application (16.7ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (undefined method `content' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[content]" cols="80" rows="20"><%= @post.content %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2297806560'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2297806560'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.1ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:42:31 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (16.3ms)
+Rendered topics/new.html.erb within layouts/application (17.3ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[content]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2298434980'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298434980'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:42:44 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_form.html.erb (70.0ms)
+Rendered topics/new.html.erb within layouts/application (70.9ms)
+Completed 500 Internal Server Error in 77ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:43:08 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (15.0ms)
+Rendered topics/new.html.erb within layouts/application (15.8ms)
+Completed 500 Internal Server Error in 21ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (60.8ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:44:16 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_form.html.erb (14.9ms)
+Rendered topics/new.html.erb within layouts/application (15.7ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.5ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:46:38 -0700 2011
+  Processing by TopicsController#new as HTML
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `topics' for nil:NilClass):
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.8ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:46:54 -0700 2011
+  Processing by TopicsController#new as HTML
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `topic' for nil:NilClass):
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.0ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:47:05 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (70.4ms)
+Rendered topics/new.html.erb within layouts/application (71.2ms)
+Completed 500 Internal Server Error in 77ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:53:56 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" IS NULL[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (10.8ms)
+Rendered topics/new.html.erb within layouts/application (11.7ms)
+Completed 500 Internal Server Error in 30ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.5ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:54:53 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_form.html.erb (14.2ms)
+Rendered topics/new.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 21ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:55:15 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/topics_controller.rb:57: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.3ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:55:29 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_form.html.erb (21.1ms)
+Rendered topics/new.html.erb within layouts/application (22.2ms)
+Completed 500 Internal Server Error in 28ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :name %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295790380'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:56:08 -0700 2011
+  Processing by TopicsController#new as HTML
+ERROR: compiling _app_views_topics__form_html_erb__508311683_2298325680 RAISED compile error
+/Users/Dana/rails_projects/app/views/topics/_form.html.erb:12: syntax error, unexpected tIDENTIFIER, expecting kEND
+...er_id, User.all, :id, :user)id );@output_buffer.safe_concat(...
+                              ^
+Function body:           def _app_views_topics__form_html_erb__508311683_2298325680(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "topics/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.append=  form_for @topic do |f| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( f.error_messages );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+'); if params[:forum] ;@output_buffer.safe_concat('<input type="hidden" id="topic_forum_id" name="topic[forum_id]" value="');@output_buffer.append= ( params[:forum] );@output_buffer.safe_concat('" />
+');	 end  
+@output_buffer.safe_concat('  <p>
+    ');@output_buffer.append= ( f.label :title );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :title );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </p>
+  <p>
+    ');@output_buffer.append= ( f.label :user_id );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.collection_select :user_id, User.all, :id, :user)id );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </p>
+<p>  
+    <textarea name="post[body]" cols="80" rows="20">');@output_buffer.append= ( @post.body );@output_buffer.safe_concat('</textarea>  
+  </p>
+  <p>');@output_buffer.append= ( f.submit "Create" );@output_buffer.safe_concat('</p>
+'); end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Users/Dana/rails_projects/app/views/topics/_form.html.erb:22:in `compile'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/template.rb:190:in `compile!'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/template.rb:143:in `render'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:55:in `instrument'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/template.rb:142:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/partial_renderer.rb:256:in `render_partial'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/partial_renderer.rb:228:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/partial_renderer.rb:227:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/partial_renderer.rb:219:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/renderer.rb:41:in `render_partial'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/helpers/rendering_helper.rb:27:in `render'
+/Users/Dana/rails_projects/app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/template.rb:144:in `send'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/template.rb:144:in `render'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:55:in `instrument'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/template.rb:142:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:40:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:39:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:47:in `render_with_layout'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:38:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:12:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:9:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_view/renderer/renderer.rb:17:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:120:in `_render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/streaming.rb:250:in `_render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:114:in `render_to_body'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/renderers.rb:30:in `render_to_body'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/compatibility.rb:43:in `render_to_body'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:99:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/rendering.rb:16:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.1.0/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/mime_responds.rb:268:in `retrieve_response_from_mimes'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/mime_responds.rb:195:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/mime_responds.rb:195:in `respond_to'
+/Users/Dana/rails_projects/app/controllers/topics_controller.rb:14:in `new'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/base.rb:167:in `process_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:416:in `_run__599332899__process_action__943997142__callbacks'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:386:in `send'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:386:in `_run_process_action_callbacks'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `send'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/params_wrapper.rb:201:in `process_action'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.1.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/base.rb:121:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:45:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal.rb:193:in `dispatch'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_controller/metal.rb:236:in `action'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:65:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:65:in `dispatch'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:152:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:96:in `recognize'
+/Library/Ruby/Gems/1.8/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:110:in `optimized_each'
+/Library/Ruby/Gems/1.8/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:95:in `recognize'
+/Library/Ruby/Gems/1.8/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:141:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:531:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/etag.rb:23:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/conditionalget.rb:25:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/flash.rb:243:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/session/abstract/id.rb:195:in `context'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/session/abstract/id.rb:190:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/cookies.rb:326:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.1.0/lib/active_record/query_cache.rb:62:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.1.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `send'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/reloader.rb:68:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/sendfile.rb:101:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/rack/logger.rb:13:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/methodoverride.rb:24:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/runtime.rb:17:in `call'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.1.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/lock.rb:15:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/static.rb:53:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/engine.rb:455:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/rack/content_length.rb:16:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/handler/webrick.rb:59:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/handler/webrick.rb:13:in `run'
+/Library/Ruby/Gems/1.8/gems/rack-1.3.4/lib/rack/server.rb:265:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/commands/server.rb:70:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/commands.rb:54
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/commands.rb:49:in `tap'
+/Library/Ruby/Gems/1.8/gems/railties-3.1.0/lib/rails/commands.rb:49
+script/rails:6:in `require'
+script/rails:6
+Rendered topics/_form.html.erb (0.9ms)
+Rendered topics/new.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (compile error
+/Users/Dana/rails_projects/app/views/topics/_form.html.erb:12: syntax error, unexpected tIDENTIFIER, expecting kEND
+...er_id, User.all, :id, :user)id );@output_buffer.safe_concat(...
+                              ^):
+    9:   </p>
+    10:   <p>
+    11:     <%= f.label :user_id %><br />
+    12:     <%= f.collection_select :user_id, User.all, :id, :user)id %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+  app/views/topics/_form.html.erb:22:in `compile'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:56:22 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_form.html.erb (16.0ms)
+Rendered topics/new.html.erb within layouts/application (16.9ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.collection_select :user_id, User.all, :id, :user_id %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2296088900'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2296088900'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 17:56:48 -0700 2011
+  Processing by TopicsController#new as HTML
+Rendered topics/_form.html.erb (9.1ms)
+Rendered topics/new.html.erb within layouts/application (10.0ms)
+Completed 500 Internal Server Error in 17ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    12:     <%= f.text_field :user_id %>
+    13:   </p>
+    14: <p>  
+    15:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    16:   </p>
+    17:   <p><%= f.submit "Create" %></p>
+    18: <% end %>
+  app/views/topics/_form.html.erb:15:in `_app_views_topics__form_html_erb__508311683_2296605960'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2296605960'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.1ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 18:00:43 -0700 2011
+  Processing by TopicsController#new as HTML
+Rendered topics/_form.html.erb (7.9ms)
+Rendered topics/new.html.erb within layouts/application (67.6ms)
+Completed 500 Internal Server Error in 73ms
+
+ActionView::Template::Error (undefined method `body' for #<Topic:0x111943f38>):
+    13:   </p>
+    14: <p>
+    15: 	<%= f.label :body %>
+    16: 		<%= f.text_field :body %>
+    17: 	
+    18: </p>
+    19: <p>  
+  app/views/topics/_form.html.erb:16:in `_app_views_topics__form_html_erb__508311683_2295832180'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2295832180'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 18:01:06 -0700 2011
+  Processing by TopicsController#new as HTML
+Rendered topics/_form.html.erb (7.0ms)
+Rendered topics/new.html.erb within layouts/application (7.9ms)
+Completed 500 Internal Server Error in 14ms
+
+ActionView::Template::Error (undefined method `body' for #<Topic:0x111ba1aa0>):
+    13:   </p>
+    14: <p>
+    15: 	<%= f.label :body %>
+    16: 	<%= f.text_field :body %>
+    17: 	
+    18: </p>
+    19: 
+  app/views/topics/_form.html.erb:16:in `_app_views_topics__form_html_erb__508311683_2296101400'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2296101400'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 18:03:43 -0700 2011
+  Processing by TopicsController#new as HTML
+Rendered topics/_form.html.erb (7.4ms)
+Rendered topics/new.html.erb within layouts/application (8.3ms)
+Completed 500 Internal Server Error in 14ms
+
+ActionView::Template::Error (undefined method `body' for #<Topic:0x112040d68>):
+    13:   </p>
+    14: <p>
+    15: 	<%= f.label :body %>
+    16: 	<%= f.text_field :body %>
+    17: 	
+    18: </p>
+    19: <!-- <p>  
+  app/views/topics/_form.html.erb:16:in `_app_views_topics__form_html_erb__508311683_2298524960'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298524960'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 18:06:45 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_form.html.erb (71.0ms)
+Rendered topics/new.html.erb within layouts/application (72.1ms)
+Completed 200 OK in 82ms (Views: 80.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:06:45 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:06:45 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started POST "/topics" for 127.0.0.1 at Tue Oct 18 18:08:21 -0700 2011
+  Processing by TopicsController#create as HTML
+  Parameters: {"commit"=>"Create", "topic"=>{"title"=>"Topic 1", "forum_id"=>"1", "user_id"=>"Dana Shanahan"}, "authenticity_token"=>"jEpQzvc5ZuQkywLeWPGFoxSluF+3KXK0vOAf+OgIrr0=", "utf8"=>"\342\234\223"}
+WARNING: Can't mass-assign protected attributes: forum_id
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "topics" ("created_at", "forum_id", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 19 Oct 2011 01:08:21 UTC +00:00], ["forum_id", nil], ["title", "Topic 1"], ["updated_at", Wed, 19 Oct 2011 01:08:21 UTC +00:00], ["user_id", 0]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 18:08:21 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 86ms (Views: 83.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:08:21 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:08:21 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 18:08:27 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:08:27 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:08:27 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 18:09:42 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 24ms (Views: 22.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:09:42 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 18:09:46 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mForum Load (0.3ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/show.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 77ms (Views: 73.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:09:46 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:09:46 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 18:09:51 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/show.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 24ms (Views: 21.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:09:51 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:09:51 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics" for 127.0.0.1 at Tue Oct 18 18:10:00 -0700 2011
+  Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" 
+Rendered topics/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:10:00 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:10:00 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:10:06 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" IS NULL LIMIT 1
+Rendered topics/show.html.erb within layouts/application (67.8ms)
+Completed 500 Internal Server Error in 76ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <b>Forum:</b>
+    5:   <%= @topic.forum.title %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/topics/show.html.erb:5:in `_app_views_topics_show_html_erb__764459211_2296315000'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:10:33 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1
+Rendered topics/show.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 25ms (Views: 21.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:10:33 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:10:33 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:10:42 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" IS NULL LIMIT 1
+Rendered topics/show.html.erb within layouts/application (68.3ms)
+Completed 500 Internal Server Error in 77ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <b>Forum:</b>
+    5:   <%= @topic.forum.title %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/topics/show.html.erb:5:in `_app_views_topics_show_html_erb__764459211_2295660700'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:28:00 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" IS NULL LIMIT 1
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1[0m
+Rendered topics/show.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 29ms (Views: 26.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:28:00 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:28:00 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:28:13 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" IS NULL LIMIT 1[0m
+Rendered topics/show.html.erb within layouts/application (16.8ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <b>Forum:</b>
+    5:   <%= @topic.forum.title %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/topics/show.html.erb:5:in `_app_views_topics_show_html_erb__764459211_2297860740'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:31:08 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" IS NULL LIMIT 1[0m
+Rendered topics/show.html.erb within layouts/application (64.9ms)
+Completed 500 Internal Server Error in 73ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <b>Forum:</b>
+    5:   <%= @topic.forum.title %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/topics/show.html.erb:5:in `_app_views_topics_show_html_erb__764459211_2297860740'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:31:30 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered topics/show.html.erb within layouts/application (6.2ms)
+Completed 500 Internal Server Error in 15ms
+
+ActionView::Template::Error (undefined method `forums' for #<Topic:0x111b3e130>):
+    2: 
+    3: <p>
+    4:   <b>Forum:</b>
+    5:   <%= @topic.forums.title %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/topics/show.html.erb:5:in `_app_views_topics_show_html_erb__764459211_2295922320'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.7ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:31:35 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" IS NULL LIMIT 1
+Rendered topics/show.html.erb within layouts/application (29.9ms)
+Completed 500 Internal Server Error in 42ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <b>Forum:</b>
+    5:   <%= @topic.forum.title %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/topics/show.html.erb:5:in `_app_views_topics_show_html_erb__764459211_2298438100'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.1ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:31:53 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered topics/show.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <b>Forum:</b>
+    5:   <%= @forum.title %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/topics/show.html.erb:5:in `_app_views_topics_show_html_erb__764459211_2295740320'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 18:32:22 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1[0m
+Rendered topics/show.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 18:32:22 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 18:32:22 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:32:25 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (98.0ms)
+Rendered posts/new.html.erb within layouts/application (99.2ms)
+Completed 500 Internal Server Error in 105ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111ba17a8>:0x111b984f0>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:37:28 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (87.4ms)
+Rendered posts/new.html.erb within layouts/application (88.4ms)
+Completed 500 Internal Server Error in 94ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x112023510>:0x1120100a0>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.1ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:38:51 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (101.6ms)
+Rendered posts/new.html.erb within layouts/application (102.6ms)
+Completed 500 Internal Server Error in 110ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111c81718>:0x111c62e80>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:41:00 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (94.3ms)
+Rendered posts/new.html.erb within layouts/application (95.2ms)
+Completed 500 Internal Server Error in 101ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111b3c4e8>:0x111b27110>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:41:21 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (43.0ms)
+Rendered posts/new.html.erb within layouts/application (43.9ms)
+Completed 500 Internal Server Error in 98ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111aafa48>:0x111b23e48>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:41:34 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (90.3ms)
+Rendered posts/new.html.erb within layouts/application (91.2ms)
+Completed 500 Internal Server Error in 97ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111e87d28>:0x111e795e8>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.5ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:41:42 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (103.7ms)
+Rendered posts/new.html.erb within layouts/application (104.7ms)
+Completed 500 Internal Server Error in 112ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111b448a0>:0x111b3e4c8>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.7ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:41:59 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (105.2ms)
+Rendered posts/new.html.erb within layouts/application (106.3ms)
+Completed 500 Internal Server Error in 112ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111acf8e8>:0x111ac8818>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (49.5ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (53.3ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:43:42 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (98.4ms)
+Rendered posts/new.html.erb within layouts/application (99.3ms)
+Completed 500 Internal Server Error in 106ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111eece08>:0x111ee8bf0>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.3ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:43:55 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (104.5ms)
+Rendered posts/new.html.erb within layouts/application (105.4ms)
+Completed 500 Internal Server Error in 112ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111ba39e0>:0x111b9f688>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.1ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:44:08 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (103.8ms)
+Rendered posts/new.html.erb within layouts/application (104.8ms)
+Completed 500 Internal Server Error in 112ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111add600>:0x111ad65a8>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:45:05 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (98.2ms)
+Rendered posts/new.html.erb within layouts/application (99.2ms)
+Completed 500 Internal Server Error in 105ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111f45670>:0x111f3b580>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296164360'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.3ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:47:22 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1: <% title "New Post" %>
+    2: 
+    3: <%= link_to @topic.title, @topic%>
+    4: <%= render 'form' %>
+    5: <%= link_to 'Back', topic_posts_path(@topic)%>
+  app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__171020314_2296223900'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.4ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:47:44 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (103.9ms)
+Rendered posts/new.html.erb within layouts/application (105.5ms)
+Completed 500 Internal Server Error in 113ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x11198b450>:0x111987378>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2295082480'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.4ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:48:23 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (99.6ms)
+Rendered posts/new.html.erb within layouts/application (100.7ms)
+Completed 500 Internal Server Error in 108ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111f49360>:0x111f43438>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2295082480'
+  app/controllers/posts_controller.rb:4:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:49:38 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (117.7ms)
+Rendered posts/new.html.erb within layouts/application (120.4ms)
+Completed 500 Internal Server Error in 132ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111bad260>:0x111ba87b0>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2296196260'
+  app/controllers/posts_controller.rb:4:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.2ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:49:47 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (103.4ms)
+Rendered posts/new.html.erb within layouts/application (104.9ms)
+Completed 500 Internal Server Error in 114ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111ac9420>:0x111aba858>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2295710740'
+  app/controllers/posts_controller.rb:4:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 18:50:10 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (98.2ms)
+Rendered posts/new.html.erb within layouts/application (99.4ms)
+Completed 500 Internal Server Error in 106ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111f69bd8>:0x111f60998>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2295710740'
+  app/controllers/posts_controller.rb:4:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.8ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 19:11:40 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `posts' for nil:NilClass):
+  app/controllers/posts_controller.rb:3:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.9ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 19:11:49 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `post' for nil:NilClass):
+  app/controllers/posts_controller.rb:3:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.9ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 19:12:28 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `posts' for nil:NilClass):
+  app/controllers/posts_controller.rb:3:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.5ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 19:13:55 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `posts' for nil:NilClass):
+  app/controllers/posts_controller.rb:3:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.8ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 19:14:11 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (98.2ms)
+Rendered posts/new.html.erb within layouts/application (99.2ms)
+Completed 500 Internal Server Error in 107ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111a234f8>:0x111a1f3d0>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2295710740'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.0ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 19:14:32 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+Rendered posts/_form.html.erb (53.2ms)
+Rendered posts/new.html.erb within layouts/application (54.5ms)
+Completed 500 Internal Server Error in 111ms
+
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x111af2b68>:0x111ae9ae0>):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2295710740'
+  app/controllers/posts_controller.rb:4:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (53.0ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 19:20:07 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected tIVAR, expecting kEND
+...  redirect_to (root_url)@topic, :notice => "Successfully cre...
+                              ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected tASSOC, expecting tCOLON2 or '[' or '.'
+...o (root_url)@topic, :notice => "Successfully created post.")
+                              ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected ')', expecting kEND
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:29: syntax error, unexpected tCONSTANT, expecting kEND
+    @topic Topic.find(params[:topic_id])
+                ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:30: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.4ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:49:03 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected tIVAR, expecting kEND
+...  redirect_to (root_url)@topic, :notice => "Successfully cre...
+                              ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected tASSOC, expecting tCOLON2 or '[' or '.'
+...o (root_url)@topic, :notice => "Successfully created post.")
+                              ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected ')', expecting kEND
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:29: syntax error, unexpected tCONSTANT, expecting kEND
+    @topic Topic.find(params[:topic_id])
+                ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:30: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.3ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:49:34 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected tIVAR, expecting kEND
+...  redirect_to (root_url)@topic, :notice => "Successfully cre...
+                              ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected tASSOC, expecting tCOLON2 or '[' or '.'
+...o (root_url)@topic, :notice => "Successfully created post.")
+                              ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:8: syntax error, unexpected ')', expecting kEND
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:29: syntax error, unexpected tCONSTANT, expecting kEND
+    @topic Topic.find(params[:topic_id])
+                ^):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.9ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:50:27 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/posts_controller.rb:29: syntax error, unexpected tCONSTANT, expecting kEND
+    @topic Topic.find(params[:topic_])
+                ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:30: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.8ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:50:54 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/posts_controller.rb:29: syntax error, unexpected tCONSTANT, expecting kEND
+    @topic Topic.find(params[:topic_id])
+                ^
+/Users/Dana/rails_projects/app/controllers/posts_controller.rb:30: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.0ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:51:06 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/posts_controller.rb:29: syntax error, unexpected tCONSTANT, expecting kEND
+    @topic Topic.find(params[:topic_id])
+                ^):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.1ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:51:54 -0700 2011
+
+SyntaxError (/Users/Dana/rails_projects/app/controllers/posts_controller.rb:31: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.8ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:52:04 -0700 2011
+  Processing by PostsController#new as HTML
+  Parameters: {"topic_id"=>"1"}
+  [1m[35mTopic Load (10.0ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered posts/_form.html.erb (0.7ms)
+Rendered posts/new.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 39ms
+
+ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
+    1: <%= form_for @post do |f| %>
+    2:   <%= f.error_messages %>
+    3:   <p>
+    4:     <%= f.label :body %><br />
+  app/views/posts/_form.html.erb:1:in `_app_views_posts__form_html_erb___2052649016_2296089680'
+  app/views/posts/new.html.erb:4:in `_app_views_posts_new_html_erb__171020314_2295710740'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.5ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:55:35 -0700 2011
+
+ActionController::RoutingError (No route matches [GET] "/topics/1/posts/new"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:58:07 -0700 2011
+
+ActionController::RoutingError (No route matches [GET] "/topics/1/posts/new"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/topics/1/posts/new" for 127.0.0.1 at Tue Oct 18 21:58:31 -0700 2011
+
+ActionController::RoutingError (No route matches [GET] "/topics/1/posts/new"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/topics/1/posts/" for 127.0.0.1 at Tue Oct 18 21:58:36 -0700 2011
+
+ActionController::RoutingError (No route matches [GET] "/topics/1/posts"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/" for 127.0.0.1 at Tue Oct 18 21:58:42 -0700 2011
+  Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" [0m
+Rendered topics/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 21:58:42 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 21:58:42 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 21:58:46 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[35mForum Load (50.3ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (22.9ms)
+Rendered topics/_form.html.erb (144.8ms)
+Rendered topics/new.html.erb within layouts/application (146.0ms)
+Completed 500 Internal Server Error in 154ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298403560'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2296381400'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2296381400'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/topics/new" for 127.0.0.1 at Tue Oct 18 21:58:58 -0700 2011
+  Processing by TopicsController#new as HTML
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (13.4ms)
+Rendered topics/_form.html.erb (95.0ms)
+Rendered topics/new.html.erb within layouts/application (95.8ms)
+Completed 500 Internal Server Error in 103ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298403560'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2296381400'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2296381400'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 21:59:59 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mPost Load (10.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_posts.html.erb (18.6ms)
+Rendered topics/show.html.erb within layouts/application (110.9ms)
+Completed 500 Internal Server Error in 124ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"new", :topic_id=>#<Topic id: 1, title: "Topic 1", user_id: 0, created_at: "2011-10-19 01:08:21", updated_at: "2011-10-19 01:08:21", forum_id: nil>}):
+    35: <%= render 'posts' %>
+    36: 
+    37: <%= link_to 'Back', forum_path(@forum) %>
+    38: <%= link_to "Create Post", new_topic_post_path(@topic)%>
+  app/views/topics/show.html.erb:38:in `_app_views_topics_show_html_erb__764459211_2295378160'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Tue Oct 18 21:59:59 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_posts.html.erb (17.0ms)
+Rendered topics/show.html.erb within layouts/application (86.4ms)
+Completed 500 Internal Server Error in 95ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"new", :topic_id=>#<Topic id: 1, title: "Topic 1", user_id: 0, created_at: "2011-10-19 01:08:21", updated_at: "2011-10-19 01:08:21", forum_id: nil>}):
+    35: <%= render 'posts' %>
+    36: 
+    37: <%= link_to 'Back', forum_path(@forum) %>
+    38: <%= link_to "Create Post", new_topic_post_path(@topic)%>
+  app/views/topics/show.html.erb:38:in `_app_views_topics_show_html_erb__764459211_2295378160'
+  app/controllers/topics_controller.rb:32:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/topics/1/edit" for 127.0.0.1 at Tue Oct 18 22:00:03 -0700 2011
+  Processing by TopicsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_posts.html.erb (23.3ms)
+Rendered topics/_form.html.erb (100.4ms)
+Rendered topics/edit.html.erb within layouts/application (101.6ms)
+Completed 200 OK in 114ms (Views: 110.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:00:03 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:00:03 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/1/edit" for 127.0.0.1 at Tue Oct 18 22:00:54 -0700 2011
+  Processing by TopicsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_posts.html.erb (10.9ms)
+Rendered topics/_form.html.erb (38.3ms)
+Rendered topics/edit.html.erb within layouts/application (39.1ms)
+Completed 200 OK in 123ms (Views: 119.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:00:54 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:00:54 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started PUT "/topics/1" for 127.0.0.1 at Tue Oct 18 22:01:00 -0700 2011
+  Processing by TopicsController#update as HTML
+  Parameters: {"commit"=>"Add Post", "topic"=>{"title"=>"Topic 1", "forum_id"=>"1"}, "authenticity_token"=>"jEpQzvc5ZuQkywLeWPGFoxSluF+3KXK0vOAf+OgIrr0=", "utf8"=>"\342\234\223", "id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+WARNING: Can't mass-assign protected attributes: forum_id
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 22:01:00 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:01:00 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:01:00 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/1/edit" for 127.0.0.1 at Tue Oct 18 22:02:31 -0700 2011
+  Processing by TopicsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_posts.html.erb (14.1ms)
+Rendered topics/_form.html.erb (39.7ms)
+Rendered topics/edit.html.erb within layouts/application (40.6ms)
+Completed 500 Internal Server Error in 48ms
+
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    29:   </tfoot>
+    30: </table>
+    31: <p>  
+    32:     <textarea name="post[body]" cols="80" rows="20"><%= @post.body %></textarea>  
+    33:   </p>
+  app/views/topics/_posts.html.erb:32:in `_app_views_topics__posts_html_erb__1959626061_2297243440'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/edit.html.erb:3:in `_app_views_topics_edit_html_erb__1327233080_2295920660'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.0ms)
+
+
+Started GET "/topics/1/edit" for 127.0.0.1 at Tue Oct 18 22:03:02 -0700 2011
+  Processing by TopicsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_posts.html.erb (13.4ms)
+Rendered topics/_form.html.erb (92.0ms)
+Rendered topics/edit.html.erb within layouts/application (93.1ms)
+Completed 200 OK in 105ms (Views: 101.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:03:03 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started PUT "/topics/1" for 127.0.0.1 at Tue Oct 18 22:03:05 -0700 2011
+  Processing by TopicsController#update as HTML
+  Parameters: {"commit"=>"Add Post", "topic"=>{"title"=>"Topic 1", "forum_id"=>"1"}, "authenticity_token"=>"jEpQzvc5ZuQkywLeWPGFoxSluF+3KXK0vOAf+OgIrr0=", "utf8"=>"\342\234\223", "id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+WARNING: Can't mass-assign protected attributes: forum_id
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 22:03:05 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1
+Rendered forums/index.html.erb within layouts/application (76.2ms)
+Completed 200 OK in 87ms (Views: 85.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:03:05 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:03:05 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums" for 127.0.0.1 at Tue Oct 18 22:03:15 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1
+Rendered forums/index.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:03:15 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:03:15 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 22:03:41 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1
+Rendered forums/show.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 25ms (Views: 21.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:03:41 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:03:41 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 22:03:43 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (12.0ms)
+Rendered topics/_form.html.erb (100.6ms)
+Rendered topics/new.html.erb within layouts/application (101.5ms)
+Completed 500 Internal Server Error in 108ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Tue Oct 18 22:06:39 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1
+Rendered forums/show.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:06:39 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 22:06:40 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (13.3ms)
+Rendered topics/_form.html.erb (96.3ms)
+Rendered topics/new.html.erb within layouts/application (97.1ms)
+Completed 500 Internal Server Error in 104ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+  [1m[36m (10.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateForums (20111018051524)
+Migrating to CreateTopics (20111018052519)
+Migrating to CreatePosts (20111018052612)
+Migrating to CreateUsers (20111018052716)
+Migrating to AddForeignToTopics (20111018054449)
+Migrating to AddForeignToPosts (20111018054702)
+Migrating to AddUserToPosts (20111019050821)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+SQLite3::SQLException: duplicate column name: user_id: ALTER TABLE "posts" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateForums (20111018051524)
+Migrating to CreateTopics (20111018052519)
+Migrating to CreatePosts (20111018052612)
+Migrating to CreateUsers (20111018052716)
+Migrating to AddForeignToTopics (20111018054449)
+Migrating to AddForeignToPosts (20111018054702)
+Migrating to AddUserToPosts (20111019050821)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+SQLite3::SQLException: duplicate column name: user_id: ALTER TABLE "posts" ADD "user_id" integer
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateForums (20111018051524)
+Migrating to CreateTopics (20111018052519)
+Migrating to CreatePosts (20111018052612)
+Migrating to CreateUsers (20111018052716)
+Migrating to AddForeignToTopics (20111018054449)
+Migrating to AddForeignToPosts (20111018054702)
+Migrating to AddUserToPosts (20111019050821)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+SQLite3::SQLException: duplicate column name: user_id: ALTER TABLE "posts" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateForums (20111018051524)
+Migrating to CreateTopics (20111018052519)
+Migrating to CreatePosts (20111018052612)
+Migrating to CreateUsers (20111018052716)
+Migrating to AddForeignToTopics (20111018054449)
+Migrating to AddForeignToPosts (20111018054702)
+Migrating to AddUserToPosts (20111019050821)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+SQLite3::SQLException: duplicate column name: user_id: ALTER TABLE "posts" ADD "user_id" integer
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Tue Oct 18 22:14:24 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (15.4ms)
+Rendered topics/_form.html.erb (104.7ms)
+Rendered topics/new.html.erb within layouts/application (105.6ms)
+Completed 500 Internal Server Error in 113ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/forums/new" for 127.0.0.1 at Tue Oct 18 22:14:30 -0700 2011
+  Processing by ForumsController#new as HTML
+Rendered forums/_form.html.erb (6.1ms)
+Rendered forums/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:14:30 -0700 2011
+Served asset /defaults.js - 404 Not Found (5ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:14:30 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started POST "/forums" for 127.0.0.1 at Tue Oct 18 22:14:41 -0700 2011
+  Processing by ForumsController#create as HTML
+  Parameters: {"commit"=>"Create Forum", "forum"=>{"title"=>"This is the second forum"}, "authenticity_token"=>"jEpQzvc5ZuQkywLeWPGFoxSluF+3KXK0vOAf+OgIrr0=", "utf8"=>"\342\234\223"}
+  [1m[36mSQL (23.1ms)[0m  [1mINSERT INTO "forums" ("created_at", "title", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Wed, 19 Oct 2011 05:14:41 UTC +00:00], ["title", "This is the second forum"], ["updated_at", Wed, 19 Oct 2011 05:14:41 UTC +00:00]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 94ms
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 22:14:41 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 2
+Rendered forums/index.html.erb within layouts/application (77.2ms)
+Completed 200 OK in 90ms (Views: 87.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:14:41 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:14:41 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/2" for 127.0.0.1 at Tue Oct 18 22:14:46 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 2
+Rendered forums/show.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:14:46 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:14:46 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:14:48 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (16.1ms)
+Rendered topics/_form.html.erb (95.4ms)
+Rendered topics/new.html.erb within layouts/application (96.3ms)
+Completed 500 Internal Server Error in 104ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/forums/2" for 127.0.0.1 at Tue Oct 18 22:15:41 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 2
+Rendered forums/show.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:15:41 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 22:15:44 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 2[0m
+Rendered forums/index.html.erb within layouts/application (68.4ms)
+Completed 200 OK in 80ms (Views: 77.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:15:44 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 22:16:32 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE (forum_id = 1) ORDER BY last_post_at DESC LIMIT 1
+SQLite3::SQLException: no such column: last_post_at: SELECT  "topics".* FROM "topics"  WHERE (forum_id = 1) ORDER BY last_post_at DESC LIMIT 1
+Rendered forums/index.html.erb within layouts/application (20.0ms)
+Completed 500 Internal Server Error in 27ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: last_post_at: SELECT  "topics".* FROM "topics"  WHERE (forum_id = 1) ORDER BY last_post_at DESC LIMIT 1):
+    16: 	
+    17: <br />
+    18: </td>
+    19:       <td class="right"><% if forum.most_recent_post %><%= distance_of_time_in_words_to_now forum.most_recent_post.last_post_at %> ago<% else %>no posts<% end %></td> 
+    20:       <td><%= link_to "Show", forum %></td>
+    21:       <td><%= link_to "Edit", edit_forum_path(forum) %></td>
+    22:       <td><%= link_to "Destroy", forum, :confirm => 'Are you sure?', :method => :delete %></td>
+  app/models/forum.rb:6:in `most_recent_post'
+  app/views/forums/index.html.erb:19:in `_app_views_forums_index_html_erb__1743006785_2296816980'
+  app/views/forums/index.html.erb:12:in `each'
+  app/views/forums/index.html.erb:12:in `_app_views_forums_index_html_erb__1743006785_2296816980'
+  app/controllers/forums_controller.rb:5:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 22:16:43 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 2[0m
+Rendered forums/index.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 32ms (Views: 28.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:16:44 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:16:44 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Oct 18 22:19:19 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 2
+Rendered forums/index.html.erb within layouts/application (72.8ms)
+Completed 200 OK in 86ms (Views: 82.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:19:19 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:19:20 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/forums/2" for 127.0.0.1 at Tue Oct 18 22:19:21 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 2
+Rendered forums/show.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 27ms (Views: 24.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:19:21 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:19:21 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:19:23 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (18.3ms)
+Rendered topics/_form.html.erb (101.2ms)
+Rendered topics/new.html.erb within layouts/application (102.0ms)
+Completed 500 Internal Server Error in 111ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:20:27 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (18.5ms)
+Rendered topics/_form.html.erb (98.8ms)
+Rendered topics/new.html.erb within layouts/application (99.6ms)
+Completed 500 Internal Server Error in 106ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:22:43 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (79.1ms)
+Rendered topics/_form.html.erb (181.1ms)
+Rendered topics/new.html.erb within layouts/application (182.8ms)
+Completed 500 Internal Server Error in 193ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:22:43 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (60.4ms)
+Rendered topics/_form.html.erb (168.6ms)
+Rendered topics/new.html.erb within layouts/application (169.8ms)
+Completed 500 Internal Server Error in 176ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:22:46 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (16.5ms)
+Rendered topics/_form.html.erb (121.9ms)
+Rendered topics/new.html.erb within layouts/application (123.2ms)
+Completed 500 Internal Server Error in 131ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:27:20 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mForum Load (0.2ms)[0m  SELECT "forums".* FROM "forums" 
+Rendered topics/_posts.html.erb (15.6ms)
+Rendered topics/_form.html.erb (106.1ms)
+Rendered topics/new.html.erb within layouts/application (107.1ms)
+Completed 500 Internal Server Error in 113ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/forums/" for 127.0.0.1 at Tue Oct 18 22:27:28 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 2[0m
+Rendered forums/index.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 29ms (Views: 27.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:27:29 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:27:29 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/2" for 127.0.0.1 at Tue Oct 18 22:27:31 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 2[0m
+Rendered forums/show.html.erb within layouts/application (75.0ms)
+Completed 200 OK in 87ms (Views: 84.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Tue Oct 18 22:27:31 -0700 2011
+Served asset /defaults.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Oct 18 22:27:31 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Tue Oct 18 22:27:34 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (65.5ms)
+Rendered topics/_form.html.erb (156.4ms)
+Rendered topics/new.html.erb within layouts/application (157.3ms)
+Completed 500 Internal Server Error in 164ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=2" for 127.0.0.1 at Wed Oct 19 06:55:34 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"2"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.8ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (19.9ms)
+Rendered topics/_form.html.erb (141.6ms)
+Rendered topics/new.html.erb within layouts/application (155.7ms)
+Completed 500 Internal Server Error in 185ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/topics/1" for 127.0.0.1 at Wed Oct 19 06:57:09 -0700 2011
+  Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (8.0ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+Rendered topics/_posts.html.erb (68.0ms)
+Rendered topics/show.html.erb within layouts/application (82.9ms)
+Completed 500 Internal Server Error in 98ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"new", :topic_id=>#<Topic id: 1, title: "Topic 1", user_id: 0, created_at: "2011-10-19 01:08:21", updated_at: "2011-10-19 01:08:21", forum_id: nil>}):
+    35: <%= render 'posts' %>
+    36: 
+    37: <%= link_to 'Back', forum_path(@forum) %>
+    38: <%= link_to "Create Post", new_topic_post_path(@topic)%>
+  app/views/topics/show.html.erb:38:in `_app_views_topics_show_html_erb__764459211_2297741100'
+  app/controllers/topics_controller.rb:50:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/1/edit" for 127.0.0.1 at Wed Oct 19 13:00:10 -0700 2011
+  Processing by TopicsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."topic_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered topics/_posts.html.erb (19.2ms)
+Rendered topics/_form.html.erb (132.8ms)
+Rendered topics/edit.html.erb within layouts/application (140.7ms)
+Completed 200 OK in 153ms (Views: 149.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Wed Oct 19 13:00:10 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Wed Oct 19 13:00:10 -0700 2011
+Served asset /defaults.js - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started PUT "/topics/1" for 127.0.0.1 at Wed Oct 19 13:00:16 -0700 2011
+  Processing by TopicsController#update as HTML
+  Parameters: {"commit"=>"Add Post", "topic"=>{"title"=>"Topic 1", "forum_id"=>"1"}, "authenticity_token"=>"jEpQzvc5ZuQkywLeWPGFoxSluF+3KXK0vOAf+OgIrr0=", "utf8"=>"\342\234\223", "id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", "1"]]
+WARNING: Can't mass-assign protected attributes: forum_id
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Oct 19 13:00:16 -0700 2011
+  Processing by ForumsController#index as HTML
+  [1m[36mForum Load (0.1ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "topics" WHERE "topics"."forum_id" = 2[0m
+Rendered forums/index.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 30ms (Views: 26.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Wed Oct 19 13:00:16 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Wed Oct 19 13:00:16 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/forums/1" for 127.0.0.1 at Wed Oct 19 13:00:22 -0700 2011
+  Processing by ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mForum Load (0.1ms)[0m  SELECT "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics" WHERE "topics"."forum_id" = 1[0m
+Rendered forums/show.html.erb within layouts/application (74.0ms)
+Completed 200 OK in 143ms (Views: 140.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at Wed Oct 19 13:00:22 -0700 2011
+Served asset /defaults.js - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Wed Oct 19 13:00:22 -0700 2011
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Wed Oct 19 13:00:24 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (60.8ms)
+Rendered topics/_form.html.erb (153.2ms)
+Rendered topics/new.html.erb within layouts/application (154.2ms)
+Completed 500 Internal Server Error in 206ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Wed Oct 19 13:00:28 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (16.2ms)
+Rendered topics/_form.html.erb (115.5ms)
+Rendered topics/new.html.erb within layouts/application (116.3ms)
+Completed 500 Internal Server Error in 123ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Wed Oct 19 13:02:21 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (14.8ms)
+Rendered topics/_form.html.erb (97.6ms)
+Rendered topics/new.html.erb within layouts/application (98.4ms)
+Completed 500 Internal Server Error in 104ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Wed Oct 19 13:03:02 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (15.0ms)
+Rendered topics/_form.html.erb (100.2ms)
+Rendered topics/new.html.erb within layouts/application (101.1ms)
+Completed 500 Internal Server Error in 108ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/topics/new?forum=1" for 127.0.0.1 at Wed Oct 19 13:03:05 -0700 2011
+  Processing by TopicsController#new as HTML
+  Parameters: {"forum"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mForum Load (0.2ms)[0m  [1mSELECT "forums".* FROM "forums" [0m
+Rendered topics/_posts.html.erb (60.9ms)
+Rendered topics/_form.html.erb (98.3ms)
+Rendered topics/new.html.erb within layouts/application (99.2ms)
+Completed 500 Internal Server Error in 186ms
+
+ActionView::Template::Error (No route matches {:controller=>"posts", :action=>"create", :format=>nil, :topic_id=>#<Topic id: nil, title: nil, user_id: nil, created_at: nil, updated_at: nil, forum_id: nil>}):
+    18:   <tfoot>
+    19:     <tr>
+    20:       <td>
+    21:         <%= form_for([@topic, Post.new]) do |f| %>
+    22:           <%= f.collection_select :user_id, User.all, :id, :name %>
+    23:       </td>
+    24:       <td>
+  app/views/topics/_posts.html.erb:21:in `_app_views_topics__posts_html_erb__1959626061_2298542280'
+  app/views/topics/_form.html.erb:20:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/_form.html.erb:1:in `_app_views_topics__form_html_erb__508311683_2298709880'
+  app/views/topics/new.html.erb:3:in `_app_views_topics_new_html_erb__2037507497_2298556280'
+  app/controllers/topics_controller.rb:14:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
