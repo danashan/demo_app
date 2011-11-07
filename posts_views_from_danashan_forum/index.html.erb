@@ -1,0 +1,12 @@
+<h1>Listing posts</h1>
+
+<% @posts.each do |post| %>
+  <div class="listing">
+    <%= post.content %>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to 'Back', topic_path(@topic) %> | 
+<%= link_to 'New Post', new_topic_post_path(@topic) %>
