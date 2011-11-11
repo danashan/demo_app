@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+   <div class="listing"> 
+	
+<b>Topic:</b>
+  <%= @topic.title %>
+
+</p>
+
+
+</div>
+
+	
+    <% @topic.posts.each do |post| %>
+<div class="listing">
+    
+        <%= post.body %>
+</div>
+        <% end %>
+
+
+<div class="listing">
+<%= link_to 'New Post', new_topic_post_path(@topic) %>
+
+</div>
+
+
+<div>
+	
+<%= link_to 'Edit', edit_topic_path(@topic) %> 
+</div>
+ 

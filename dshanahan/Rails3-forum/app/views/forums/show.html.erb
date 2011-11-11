@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+ <div class="listing">
+<p>
+  <b>Forum:</b>
+  <%= @forum.title %>&nbsp;&nbsp;<%= link_to '(Edit)', edit_forum_path(@forum) %> 
+</p>
+<p>
+  
+<p>
+  <b>Description:</b>
+  <%= @forum.description %>
+
+</p>
+ 
+ </div>
+
+ <div class="listing">
+<div id="topics">
+
+  <% @forum.topics.each do |topic| %>
+    <div class="class">
+	<b>	<%= link_to topic.title, topic_path(topic) %></b>&nbsp;&nbsp; created <%= time_ago_in_words(topic.created_at)%> ago
+	</div>
+    <div class="description"><%= topic.description %></div>
+	 
+	<p>
+		<br/>
+
+  </div>
+  <% end %>
+
+</div> 
+
+
+<%= link_to 'Back', forums_path %> | 
+
+<%= link_to 'New Topic', new_forum_topic_path(@forum) %>

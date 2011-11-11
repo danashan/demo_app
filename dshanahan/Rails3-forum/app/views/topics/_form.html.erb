@@ -1,0 +1,34 @@
+<%= form_for(@topic) do |f| %>
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+      <ul>
+      <% @topic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="listing">
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :size => 60 %></br>
+Posted By: 		<%= f.label :username%>
+		<%= f.collection_select :user_id, User.all, :id, :username%>
+  </div>
+	<div class"field">
+		<%= f.label :title%>
+		<%=f.collection_select :forum_id, Forum.all, :id, :title%>
+	
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :cols => 60, :rows => 5 %>
+  </div>
+
+	
+ </div>
+ <div class="actions">
+    <%= f.submit  "Create"%>
+  </div>
+<% end %>
