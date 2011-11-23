@@ -1,5 +1,7 @@
 <h1>Users</h1>
 <div class="listing">
+
+	<%= will_paginate %>
 <table>
   <tr>
 	   <th>Username</th>
@@ -14,19 +16,18 @@
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
-	  <td><%= link_to user.username , user%></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-  
-    <td><%= user.email %></td>
-    <td><%= user.active %></td>
-  
+ <ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= gravatar_for user, :size => 30 %>
+      <%= link_to user.username, user %>
+    </li>
+  <% end %>
+</ul>
 
-  </tr>
 <% end %>
 </table>
-
+<%= will_paginate %>
 <br />
 </div>
 <%= link_to 'New User', new_user_path %>

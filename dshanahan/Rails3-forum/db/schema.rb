@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111110185944) do
+ActiveRecord::Schema.define(:version => 20111123163728) do
 
   create_table "forums", :force => true do |t|
     t.string   "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20111110185944) do
     t.datetime "updated_at"
     t.integer  "topic_id"
     t.integer  "user_id"
+    t.integer  "forum_id"
   end
 
   create_table "topics", :force => true do |t|
@@ -45,6 +46,10 @@ ActiveRecord::Schema.define(:version => 20111110185944) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password"
+    t.string   "salt"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

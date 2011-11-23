@@ -1,32 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-   <div class="listing"> 
-	
-<b>Topic:</b>
-  <%= @topic.title %>
+<div class="listing"> 
+  <p>
+  <b>Topic:</b>
+    <%= @topic.title %>
+  </p>
 
+<p>
+  <b>Description:</b>
+  <%= @topic.description %>
+</p>
+
+	<% @topic.posts.each do |f| %>
+
+<p>	   
+	<i>Post Created By: <%= link_to f.user.username, f.user %>,
+		                <%= time_ago_in_words(f.created_at)%> ago</i>
+		<%= link_to '(Edit)', edit_topic_post_path(@topic) %> 
 </p>
 
 
-</div>
-
+		<p>	 <%= f.body %></p>
 	
-    <% @topic.posts.each do |post| %>
-<div class="listing">
-    
-        <%= post.body %>
+		<% end %>
+		
 </div>
-        <% end %>
-
-
-<div class="listing">
-<%= link_to 'New Post', new_topic_post_path(@topic) %>
-
-</div>
-
 
 <div>
-	
-<%= link_to 'Edit', edit_topic_path(@topic) %> 
+ <%= link_to 'New Post', new_topic_post_path(@topic) %>
+<%= link_to 'Edit', edit_topic_post_path(@topic) %> 
+<%= link_to 'Back', topics_path %>
 </div>
- 

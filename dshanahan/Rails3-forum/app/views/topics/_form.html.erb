@@ -14,12 +14,9 @@
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title, :size => 60 %></br>
-Posted By: 		<%= f.label :username%>
-		<%= f.collection_select :user_id, User.all, :id, :username%>
+
+
   </div>
-	<div class"field">
-		<%= f.label :title%>
-		<%=f.collection_select :forum_id, Forum.all, :id, :title%>
 	
   <div class="field">
     <%= f.label :description %><br />

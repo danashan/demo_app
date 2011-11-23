@@ -1,14 +1,19 @@
 
-
-<% @forums.each do |forum| %>
 <div class="listing">
-	
-  <div><%= link_to forum.title, forum_path(forum) %></div>
-  <div><%= forum.description %></div>
-  created <%= time_ago_in_words(forum.created_at)%> ago 
+<% @forums.each do |forum| %>
 </div>
-<% end %>
+<div class="listing">	
+  <div><%= link_to forum.title, forum_path(forum) %></div>
+  <%= forum.description %>
+  <div>
+  <% if forum.user?%>
+  created by <%= link_to forum.user.username, forum.user%>, 
+  <%= time_ago_in_words(forum.created_at)%> ago </div>
+
+  <% end %>
 
 <br />
+<% end %>
+</div>
 
 <%= link_to 'New Forum', new_forum_path %>

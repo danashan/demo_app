@@ -1,6 +1,7 @@
 class ForumsController < ApplicationController
   # GET /forums
   # GET /forums.xml
+  
   def index
     @forums = Forum.all
 
@@ -13,8 +14,9 @@ class ForumsController < ApplicationController
   # GET /forums/1
   # GET /forums/1.xml
   def show
-    @forum = Forum.find(params[:id])
-  #  @topics = @forum.topics
+  
+   @forum = Forum.find(params[:id])
+   @topics = @forum.topics
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,8 +44,8 @@ class ForumsController < ApplicationController
   # POST /forums.xml
   def create
   #   @forum  = Forum.new
-    @forum = Forum.new(params[:forum])
-    
+   @forum = Forum.new(params[:forum])
+   @forum.user_id = current_user.id
 
     respond_to do |format|
       if @forum.save

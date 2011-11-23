@@ -4,20 +4,24 @@ class TopicsController < ApplicationController
 
   # GET /topics
   # GET /topics.xml
-  def index
-   @topics = Topic.all
-   #@topics = @forum.topics
-   
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @topics }
-    end
-  end
+  # def index
+  #  @topics = Topic.all
+  #  #@topics = @forum.topics
+  #  
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.xml  { render :xml => @topics }
+  #   end
+  # end
 
   # GET /topics/1
   # GET /topics/1.xml
   def show
-    @topic = Topic.find(params[:id])
+    @forum = Forum.find(params[:forum_id])
+    @topic = @forum.topics.find(params[:id])
+    #@topic = Topic.find(params[:id])
+    
+    
   #  @post = @topic.posts.all
  #   @post = @topic.posts.build
 
@@ -46,23 +50,22 @@ class TopicsController < ApplicationController
 
   # POST /topics
   # POST /topics.xml
-  def create
+   def create
+  @topic = Topic.new(params[:topic])
+  @topic.user_id = current_user.id
 
-@topic = Topic.new(params[:topic])
-    
-    
-   #   @topic = @forum.topics.build(params[:topic])
-  #    @topic.user_id = params[:user][:user_id]#[:forum_id]
-   #   @topic.title = params[:user_id][:topic_id]
- 
-    respond_to do |format|
-      if @topic.save
-        format.html {redirect_to([@forum,@topic], :notice => 'Topic was successfully created.') }
-        format.xml  { render :xml => @topic, :status => :created, :location => @topic }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
-      end
+
+     #   @topic = @forum.topics.build(params[:topic])
+    #    @topic.user_id = params[:user][:user_id]#[:forum_id]
+     #   @topic.title = params[:user_id][:topic_id]
+
+      respond_to do |format|
+        if @topic.save
+          format.html {redirect_to([@forum,@topic], :notice => 'Topic was successfully created.') }
+          format.xml  { render :xml => @topic, :status => :created, :location => @topic }
+        else
+          format.html { render :action => "new" }
+                 format.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
     end
   end
 
@@ -104,5 +107,5 @@ class TopicsController < ApplicationController
 #      else # topics index
 #        redirect_to(forums_path)
 #      end
-#    end
+    end
 end

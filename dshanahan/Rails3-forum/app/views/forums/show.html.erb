@@ -1,37 +1,39 @@
 <p id="notice"><%= notice %></p>
- <div class="listing">
-<p>
+<div class="listing">
+  <p>
   <b>Forum:</b>
-  <%= @forum.title %>&nbsp;&nbsp;<%= link_to '(Edit)', edit_forum_path(@forum) %> 
-</p>
-<p>
-  
-<p>
-  <b>Description:</b>
-  <%= @forum.description %>
 
-</p>
- 
- </div>
-
- <div class="listing">
-<div id="topics">
-
-  <% @forum.topics.each do |topic| %>
-    <div class="class">
-	<b>	<%= link_to topic.title, topic_path(topic) %></b>&nbsp;&nbsp; created <%= time_ago_in_words(topic.created_at)%> ago
-	</div>
-    <div class="description"><%= topic.description %></div>
-	 
-	<p>
-		<br/>
-
-  </div>
+  <%= @forum.title %>&nbsp;&nbsp;
+  <% if current_user  || current_user == @forum.user %>
+  <%= link_to '(Edit)', edit_forum_path(@forum) %> 
   <% end %>
+ </p> 
 
-</div> 
+  <p>
+    <b>Description:</b>
+    <%= @forum.description %>
+  </p>
+</div>
+
+<div class="listing">
+  <p><% @forum.topics.each do |topic| %>
+	<%= link_to 'Topics', forums_topics_path %> 
+	 <b><%= link_to topic.title, topic_path(topic) %></b>
+		<%= topic.description %>&nbsp;&nbsp;  
+		Created <%= time_ago_in_words(topic.created_at)%> ago
+		<i>Created by <%= topic.user.username%> </i>
+    <% end %>
+  </p>
 
 
-<%= link_to 'Back', forums_path %> | 
+<% if current_user  || current_user == @forum.user %>
 
-<%= link_to 'New Topic', new_forum_topic_path(@forum) %>
+	<p>
+	<%= button_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>	
+	</p>
+<% end %>
+
+<i><%= link_to 'Back', forums_path %> | 
+
+<%= link_to 'New Topic', new_forum_topic_path(@forum) %></i>
+</div>

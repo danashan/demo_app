@@ -1,5 +1,5 @@
-<h1>Listing topics</h1>
-
+<h1>Topics</h1>
+<div class = "listing">
 <table>
   <tr>
     <th>Title</th>
@@ -9,19 +9,17 @@
     <th></th>
   </tr>
 
-<% @topics.each do |topic| %>
-
-  <tr>
-    <td><%= link_to topic.title, topic %></td>
- 
-    <td><%= link_to 'Show', topic %></td>
-    <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <p><% @forum.topics.each do |topic| %>
+	
+	 <b><%= link_to topic.title, topic_path(topic) %></b>
+		<%= topic.description %>&nbsp;&nbsp;  
+		Created <%= time_ago_in_words(topic.created_at)%> ago
+		<i>Created by <%= topic.user.username%> </i>
+    <% end %>
+  </p>
 </table>
 
 <br />
-
+</div>
 <%= link_to 'New Topic', new_topic_path %>
 
