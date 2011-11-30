@@ -1,21 +1,8 @@
 <h1>Users</h1>
 <div class="listing">
-
 	<%= will_paginate %>
-<table>
-  <tr>
-	   <th>Username</th>
-    <th>First</th>
-    <th>Last</th>
- 
-    <th>Email</th>
-    <th>Active</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @users.each do |user| %>
+
  <ul class="users">
   <% @users.each do |user| %>
     <li>
@@ -25,9 +12,10 @@
   <% end %>
 </ul>
 
-<% end %>
-</table>
+
 <%= will_paginate %>
 <br />
 </div>
+<% if current_user  || current_user == @user %>
 <%= link_to 'New User', new_user_path %>
+<%end%>

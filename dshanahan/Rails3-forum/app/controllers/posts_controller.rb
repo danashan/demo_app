@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_filter :load_forum_and_topic
-
+ before_filter :authenticate, :only => [ :edit, :update, :destroy, :new]
+  before_filter :correct_user, :only => [:index, :edit, :update]
   # GET /posts/1
   # GET /posts/1.xml
   def show
@@ -70,4 +71,20 @@ class PostsController < ApplicationController
       @topic = Topic.find(params[:topic_id])
       @forum = @topic.forum
     end
-end
+
+
+     def authenticate
+        deny_access unless signed_in?
+        end
+     def correct_user
+       @user = User.find(params[:id])
+        redirect_to(root_path) unless current_user?(@user)
+        end
+
+      def admin_user
+        redirect_to(root_path) unless current_user.admin?
+        end
+
+    end
+    
+#end

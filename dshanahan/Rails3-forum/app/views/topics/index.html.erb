@@ -1,25 +1,23 @@
 <h1>Topics</h1>
-<div class = "listing">
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-  <p><% @forum.topics.each do |topic| %>
-	
+<div class="listing">	
+  
+<p><% @topics.each do |topic| %>
+</div>
+
+<div class="listing">	
 	 <b><%= link_to topic.title, topic_path(topic) %></b>
 		<%= topic.description %>&nbsp;&nbsp;  
+		 <% if topic.user?%>
 		Created <%= time_ago_in_words(topic.created_at)%> ago
-		<i>Created by <%= topic.user.username%> </i>
+		<i>Created by <%= topic.user.username%> </i><br/>
     <% end %>
-  </p>
-</table>
+ <% end %>
+  </p></div>
+
 
 <br />
-</div>
+<% if current_user  || current_user == @forum.user %>
 <%= link_to 'New Topic', new_topic_path %>
+<%end%>
 

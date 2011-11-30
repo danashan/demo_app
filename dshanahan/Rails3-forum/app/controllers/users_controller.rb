@@ -1,7 +1,7 @@
 include UsersHelper
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
-  before_filter :correct_user, :only => [:index, :edit, :update]
+#  before_filter :correct_user, :only => [:index, :edit, :update]
   before_filter :admin_user, :only => :destroy
   # GET /users
   # GET /users.json
@@ -100,18 +100,17 @@ class UsersController < ApplicationController
    #   format.json { head :ok }
   #  end
   end
-
+end
   private
 
        def authenticate
          deny_access unless signed_in?
        end
-        def correct_user
-             @user = User.find(params[:id])
-             redirect_to(root_path) unless current_user?(@user)
-           end
-           
+        # def correct_user
+        #           @user = User.find(params[:id])
+        #              redirect_to(root_path) unless current_user?(@user)
+        #            end
+        #            
           def admin_user
             redirect_to(root_path) unless current_user.admin?
           end
-       end

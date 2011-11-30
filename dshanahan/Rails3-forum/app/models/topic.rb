@@ -14,12 +14,17 @@
 class Topic < ActiveRecord::Base
   belongs_to :forum
   has_many :posts, :dependent => :destroy
-#  belongs_to :user
+  belongs_to :user
 
   validates :title, :presence => true
   validates :description, :presence => true
 
+def user?
+    self.user
+  end
+  
 end
+
 def to_s
-  title
+title
 end

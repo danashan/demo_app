@@ -1,28 +1,30 @@
 class TopicsController < ApplicationController
-  #before_filter :load_forum, :except => [:show, :edit, :update]
-#  before_filter :load_forum
-
+#  before_filter :load_forum, :except => [:show, :edit, :update]
+ # before_filter :load_forum
+  before_filter :authenticate, :only => [:edit, :update, :destroy, :new]
   # GET /topics
   # GET /topics.xml
-  # def index
-  #  @topics = Topic.all
-  #  #@topics = @forum.topics
-  #  
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.xml  { render :xml => @topics }
-  #   end
-  # end
+  def index
+    @topics = Topic.all
+    #@topics = @forum.topics
+    
+     respond_to do |format|
+       format.html # index.html.erb
+       format.xml  { render :xml => @topics }
+     end
+   end
 
   # GET /topics/1
   # GET /topics/1.xml
   def show
-    @forum = Forum.find(params[:forum_id])
-    @topic = @forum.topics.find(params[:id])
+ @topic = Topic.find(params[:id])
+
+ #   @forum = Forum.find(params[:forum_id])
+#    @topic = @forum.topics.find(params[:id])
     #@topic = Topic.find(params[:id])
     
     
-  #  @post = @topic.posts.all
+   @post = @topic.posts.all
  #   @post = @topic.posts.build
 
     respond_to do |format|
@@ -46,6 +48,7 @@ class TopicsController < ApplicationController
   # GET /topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
+ #   @topic = correctUser.topic.find(params[:topic])
   end
 
   # POST /topics
@@ -96,16 +99,32 @@ class TopicsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+   private
 
-#  private
-#    def load_forum
-#      if (params[:id])
-#        @topic = Topic.find(params[:id]) # rescue redirect_to(forum_topics_path)
-#        @forum = @topic.forum rescue redirect_to(forums_path)
-#      elsif (params[:forum_id])
-#       @forum = Forum.find(params[:forum_id]) # rescue redirect_to(forums_path)
-#      else # topics index
-#        redirect_to(forums_path)
-#      end
-    end
-end
+          def authenticate
+            deny_access unless signed_in?
+          end
+           def correct_user
+                @user = User.find(params[:id])
+                redirect_to(root_path) unless current_user?(@user)
+              end
+
+             def admin_user
+               redirect_to(root_path) unless current_user.admin?
+             end
+
+ end
+ end
+   # def load_forum
+   #      if (params[:id])
+   #        @topic = Topic.find(params[:id]) # rescue redirect_to(forum_topics_path)
+   #        @forum = @topic.forum rescue redirect_to(forums_path)
+   #      elsif (params[:forum_id])
+   #       @forum = Forum.find(params[:forum_id]) # rescue redirect_to(forums_path)
+   #      else # topics index
+   #        redirect_to(forums_path)
+   #      end
+   #    end
+   # end
+   

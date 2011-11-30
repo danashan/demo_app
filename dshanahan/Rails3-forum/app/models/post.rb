@@ -18,4 +18,12 @@ class Post < ActiveRecord::Base
   validates :body, :presence => true
 
  # default_scope :order => 'created_at DESC'
-end
+  def user?
+       self.user
+     end
+
+ end
+
+ def to_s
+   title
+ end

@@ -21,6 +21,7 @@
 			<h3><li><%= link_to "Sign out", signout_path, :method => :delete %></li>
 		<% else %>
 		<li><%= link_to "Sign in", signin_path %></li>
+		<p>New user? <%= link_to "Sign up now!", signup_path %></p>
 	</h3>
 	
       	

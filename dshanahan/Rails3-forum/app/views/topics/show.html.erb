@@ -10,13 +10,17 @@
   <b>Description:</b>
   <%= @topic.description %>
 </p>
-
+</div>
+<div class="listing"> 
 	<% @topic.posts.each do |f| %>
 
 <p>	   
 	<i>Post Created By: <%= link_to f.user.username, f.user %>,
 		                <%= time_ago_in_words(f.created_at)%> ago</i>
+	
+	<% if current_user == @topic.user %>
 		<%= link_to '(Edit)', edit_topic_post_path(@topic) %> 
+		<%end%>
 </p>
 
 
@@ -25,9 +29,11 @@
 		<% end %>
 		
 </div>
-
+<% if current_user == @topic.user %>
+<%= link_to 'Edit', edit_topic_post_path(@topic) %> 
+<%end%>
 <div>
  <%= link_to 'New Post', new_topic_post_path(@topic) %>
-<%= link_to 'Edit', edit_topic_post_path(@topic) %> 
+
 <%= link_to 'Back', topics_path %>
 </div>
