@@ -17,7 +17,7 @@
 
 
 <br />
-<% if current_user  || current_user == @forum.user %>
+<% if current_user  %>
 <%= link_to 'New Topic', new_topic_path %>
 <%end%>
 
