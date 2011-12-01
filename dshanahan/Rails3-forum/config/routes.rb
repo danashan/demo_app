@@ -11,11 +11,11 @@ Rails3Forums::Application.routes.draw do
    match '/signout', :to => 'sessions#destroy'
 
 
-  resources :topics do
+  resources :topics, :shallow => true do
     resources :posts
   end
 
-  resources :forums do
+  resources :forums, :shallow => true do
     resources :topics
   end
 
